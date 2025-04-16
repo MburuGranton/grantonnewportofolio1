@@ -26,9 +26,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-white text-gray-800 font-sans">
+    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden">
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
         <AboutSection />
         <SkillsSection />
