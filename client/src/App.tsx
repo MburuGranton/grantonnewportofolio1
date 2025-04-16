@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/toaster";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
-import { useTheme } from "@/context/theme-context";
 import { checkInView } from "@/lib/animation";
 
 function Router() {
@@ -18,8 +17,6 @@ function Router() {
 }
 
 function AppContent() {
-  const { theme } = useTheme();
-  
   useEffect(() => {
     // Initialize animations when the page loads
     checkInView();

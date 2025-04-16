@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,6 @@ import { PhoneCall, Mail, MapPin } from "lucide-react";
 import { FiGithub, FiTwitter, FiLinkedin, FiDribbble } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { useTheme } from "@/context/theme-context";
 
 type FormValues = {
   name: string;
@@ -21,7 +20,31 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>();
-  const { theme } = useTheme();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  // Monitor theme changes
+  useEffect(() => {
+    const updateTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      setTheme(isDarkMode ? "dark" : "light");
+    };
+    
+    // Set initial theme
+    updateTheme();
+    
+    // Watch for changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          updateTheme();
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);

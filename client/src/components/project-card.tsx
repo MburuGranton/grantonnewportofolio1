@@ -1,5 +1,5 @@
 import { FiGithub, FiExternalLink } from "react-icons/fi";
-import { useTheme } from "@/context/theme-context";
+import { useEffect, useState } from "react";
 
 interface Technology {
   name: string;
@@ -28,11 +28,35 @@ const ProjectCard = ({
   githubUrl,
   category
 }: ProjectCardProps) => {
-  const { theme } = useTheme();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  // Monitor the theme changes by checking the HTML class
+  useEffect(() => {
+    const updateTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      setTheme(isDarkMode ? "dark" : "light");
+    };
+    
+    // Set initial theme
+    updateTheme();
+    
+    // Watch for changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          updateTheme();
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
   
   return (
     <div className="animate-on-scroll project-card group">
-      <div className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300`}>
+      <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-gray-800 bg-white">
         <div className="relative overflow-hidden">
           <img 
             src={imageUrl}
@@ -50,7 +74,7 @@ const ProjectCard = ({
         
         <div className="p-6">
           <h3 className="font-bold text-lg mb-2">{title}</h3>
-          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} text-sm mb-4`}>{description}</p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{description}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech, index) => (
               <span 
@@ -68,7 +92,7 @@ const ProjectCard = ({
             </a>
             <a 
               href={githubUrl} 
-              className={`${theme === 'dark' ? 'text-gray-400 hover:text-gray-200' : 'text-gray-500 hover:text-gray-700'} transition-colors`}
+              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
             >
               <FiGithub className="h-5 w-5" />
             </a>
