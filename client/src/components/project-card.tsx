@@ -55,8 +55,8 @@ const ProjectCard = ({
   }, []);
   
   return (
-    <div className="animate-on-scroll project-card group">
-      <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-gray-800 bg-white">
+    <div className="animate-on-scroll project-card group h-full">
+      <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-gray-800 bg-white h-full flex flex-col">
         <div className="relative overflow-hidden">
           <img 
             src={imageUrl}
@@ -72,9 +72,9 @@ const ProjectCard = ({
           </div>
         </div>
         
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-grow">
           <h3 className="font-bold text-lg mb-2">{title}</h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{description}</p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">{description}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech, index) => (
               <span 
@@ -85,7 +85,7 @@ const ProjectCard = ({
               </span>
             ))}
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center mt-auto">
             <a href={projectUrl} className="text-primary hover:text-primary/80 transition-colors font-medium flex items-center text-sm">
               <span>View Project</span>
               <FiExternalLink className="h-4 w-4 ml-1" />
