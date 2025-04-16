@@ -29,8 +29,6 @@ const ThemeToggle = () => {
     
     // Update state
     setTheme(newTheme);
-    
-    console.log(`Theme toggled to: ${newTheme}`);
   };
 
   return (
