@@ -69,7 +69,7 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6">
-        <div className={`${theme === 'dark' ? 'bg-gradient-to-br from-primary/20 to-accent/20' : 'bg-gradient-to-br from-primary/10 to-accent/10'} rounded-3xl p-8 md:p-12 lg:p-16 shadow-xl`}>
+        <div className="bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 rounded-3xl p-8 md:p-12 lg:p-16 shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="animate-on-scroll">
               <div className="inline-block px-3 py-1 rounded-full bg-blue-100 text-primary mb-6">
@@ -78,7 +78,7 @@ const ContactSection = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Let's work together on your next project
               </h2>
-              <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-8`}>
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
                 I'm currently available for freelance work. If you have a project that needs some creative direction, development work, or improvement, feel free to contact me.
               </p>
               
@@ -89,7 +89,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Phone</h3>
-                    <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>(123) 456-7890</p>
+                    <p className="text-gray-600 dark:text-gray-300">(123) 456-7890</p>
                   </div>
                 </div>
                 
@@ -99,7 +99,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Email</h3>
-                    <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>hello@johndoe.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">hello@johndoe.com</p>
                   </div>
                 </div>
                 
@@ -109,45 +109,45 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Location</h3>
-                    <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>San Francisco, California</p>
+                    <p className="text-gray-600 dark:text-gray-300">San Francisco, California</p>
                   </div>
                 </div>
               </div>
               
               <div className="flex space-x-4">
-                <a href="#" className={`${theme === 'dark' ? 'text-gray-400 hover:text-primary bg-gray-800' : 'text-gray-600 hover:text-primary bg-white'} transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md`}>
+                <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                   <FiGithub className="w-5 h-5" />
                 </a>
-                <a href="#" className={`${theme === 'dark' ? 'text-gray-400 hover:text-primary bg-gray-800' : 'text-gray-600 hover:text-primary bg-white'} transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md`}>
+                <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                   <FiTwitter className="w-5 h-5" />
                 </a>
-                <a href="#" className={`${theme === 'dark' ? 'text-gray-400 hover:text-primary bg-gray-800' : 'text-gray-600 hover:text-primary bg-white'} transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md`}>
+                <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                   <FiLinkedin className="w-5 h-5" />
                 </a>
-                <a href="#" className={`${theme === 'dark' ? 'text-gray-400 hover:text-primary bg-gray-800' : 'text-gray-600 hover:text-primary bg-white'} transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md`}>
+                <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                   <FiDribbble className="w-5 h-5" />
                 </a>
               </div>
             </div>
             
             <div className="animate-on-scroll">
-              <form onSubmit={handleSubmit(onSubmit)} className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-8 rounded-xl shadow-lg`}>
+              <form onSubmit={handleSubmit(onSubmit)} className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
                 <h3 className="text-xl font-bold mb-6">Send me a message</h3>
                 
                 <div className="space-y-6">
                   <div>
-                    <Label htmlFor="name" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-1`}>Name</Label>
+                    <Label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</Label>
                     <Input
                       id="name"
                       {...register("name", { required: "Name is required" })}
-                      className={`w-full px-4 py-3 border ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors`}
+                      className="w-full px-4 py-3 border bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                       placeholder="Your name"
                     />
                     {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
                   </div>
                   
                   <div>
-                    <Label htmlFor="email" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-1`}>Email</Label>
+                    <Label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</Label>
                     <Input
                       id="email"
                       type="email"
@@ -158,30 +158,30 @@ const ContactSection = () => {
                           message: "Invalid email address"
                         }
                       })}
-                      className={`w-full px-4 py-3 border ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors`}
+                      className="w-full px-4 py-3 border bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                       placeholder="Your email"
                     />
                     {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
                   </div>
                   
                   <div>
-                    <Label htmlFor="subject" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-1`}>Subject</Label>
+                    <Label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</Label>
                     <Input
                       id="subject"
                       {...register("subject", { required: "Subject is required" })}
-                      className={`w-full px-4 py-3 border ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors`}
+                      className="w-full px-4 py-3 border bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                       placeholder="Subject"
                     />
                     {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>}
                   </div>
                   
                   <div>
-                    <Label htmlFor="message" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-1`}>Message</Label>
+                    <Label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</Label>
                     <Textarea
                       id="message"
                       {...register("message", { required: "Message is required" })}
                       rows={4}
-                      className={`w-full px-4 py-3 border ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors`}
+                      className="w-full px-4 py-3 border bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                       placeholder="Your message"
                     />
                     {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
