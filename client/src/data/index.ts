@@ -19,19 +19,46 @@ export const brands = [
 
 export const skills = {
   frontend: [
-    { name: "HTML & CSS", percentage: 95 },
-    { name: "JavaScript", percentage: 90 },
-    { name: "React", percentage: 85 }
+    { name: "HTML & CSS" },
+    { name: "JavaScript" },
+    { name: "React" },
+    { name: "TypeScript" }
   ],
   design: [
-    { name: "Figma", percentage: 90 },
-    { name: "Responsive Design", percentage: 95 },
-    { name: "Prototyping", percentage: 80 }
+    { name: "Figma" },
+    { name: "Responsive Design" },
+    { name: "Prototyping" },
+    { name: "UI/UX" }
   ],
   frameworks: [
-    { name: "TailwindCSS", percentage: 95 },
-    { name: "Next.js", percentage: 85 },
-    { name: "Git & GitHub", percentage: 90 }
+    { name: "TailwindCSS" },
+    { name: "Next.js" },
+    { name: "Git & GitHub" },
+    { name: "Node.js" }
+  ],
+  marketing: [
+    { name: "Content Strategy" },
+    { name: "SEO" },
+    { name: "Social Media" },
+    { name: "Analytics" }
+  ],
+  business: [
+    { name: "Business Development" },
+    { name: "Market Research" },
+    { name: "Strategic Planning" },
+    { name: "Revenue Growth" }
+  ],
+  partnership: [
+    { name: "Relationship Building" },
+    { name: "Contract Negotiation" },
+    { name: "Alliance Management" },
+    { name: "Joint Ventures" }
+  ],
+  kol: [
+    { name: "Influencer Relations" },
+    { name: "Community Building" },
+    { name: "Campaign Management" },
+    { name: "Brand Advocacy" }
   ]
 };
 
