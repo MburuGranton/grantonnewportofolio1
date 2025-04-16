@@ -53,11 +53,10 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`fixed w-full z-50 border-b transition-colors duration-200 ${
-      theme === 'dark' 
-        ? `bg-gray-900/90 backdrop-blur-sm border-gray-800 ${isScrolled ? 'shadow-md shadow-black/10' : ''}` 
-        : `bg-white/80 backdrop-blur-sm border-gray-100 ${isScrolled ? 'shadow-sm' : ''}`
-    }`}>
+    <header className={`fixed w-full z-50 border-b transition-colors duration-200 
+      bg-white/80 dark:bg-gray-900/90 backdrop-blur-sm border-gray-100 dark:border-gray-800
+      ${isScrolled ? 'shadow-sm dark:shadow-md dark:shadow-black/10' : ''}
+    `}>
       <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
           <Link href="/" className="text-xl font-bold flex items-center">

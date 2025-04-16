@@ -1,20 +1,44 @@
 import { Button } from "@/components/ui/button";
 import ProjectCard from "@/components/project-card";
 import { projects } from "@/data";
-import { useTheme } from "@/context/theme-context";
+import { useEffect, useState } from "react";
 
 const ProjectsSection = () => {
-  const { theme } = useTheme();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  // Monitor theme changes
+  useEffect(() => {
+    const updateTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      setTheme(isDarkMode ? "dark" : "light");
+    };
+    
+    // Set initial theme
+    updateTheme();
+    
+    // Watch for changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          updateTheme();
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
   
   return (
-    <section id="projects" className={`py-20 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-on-scroll">
           <div className="inline-block px-3 py-1 rounded-full bg-blue-100 text-primary mb-6">
             <span className="text-sm font-medium">My Work</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto`}>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Here's a selection of my recent work. Each project presented unique challenges that helped me grow as a developer.
           </p>
         </div>
@@ -29,12 +53,7 @@ const ProjectsSection = () => {
           <Button 
             asChild 
             variant="outline" 
-            className={`
-              ${theme === 'dark' 
-                ? 'border-gray-700 hover:border-primary text-gray-300 hover:text-primary' 
-                : 'border-gray-300 hover:border-primary text-gray-700 hover:text-primary'
-              } inline-flex items-center
-            `}
+            className="border-gray-300 dark:border-gray-700 hover:border-primary text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary inline-flex items-center"
           >
             <a href="#">
               View All Projects

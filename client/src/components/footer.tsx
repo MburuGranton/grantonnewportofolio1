@@ -1,12 +1,36 @@
 import { Link } from "wouter";
 import { FiGithub, FiTwitter, FiLinkedin } from "react-icons/fi";
-import { useTheme } from "@/context/theme-context";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
-  const { theme } = useTheme();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  // Monitor theme changes
+  useEffect(() => {
+    const updateTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      setTheme(isDarkMode ? "dark" : "light");
+    };
+    
+    // Set initial theme
+    updateTheme();
+    
+    // Watch for changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          updateTheme();
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
   
   return (
-    <footer className={`${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-900'} text-white py-12`}>
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
