@@ -19,9 +19,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<Theme>("light");
 
-  // Run this effect only on client side to prevent hydration errors
+  // Initialize theme from localStorage or system preference
   useEffect(() => {
-    setMounted(true);
     // Check if theme is stored in localStorage
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     // Check if user has a system preference
@@ -31,12 +30,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
     setTheme(initialTheme);
     
-    // Apply theme to document
+    // Apply theme to document immediately
     if (initialTheme === "dark") {
       document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
+    
+    setMounted(true);
   }, []);
 
+  // Update document class and localStorage when theme changes
   useEffect(() => {
     if (!mounted) return;
     
@@ -44,22 +48,32 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("theme", theme);
     
     // Update the document element class for CSS theme switching
-    const root = document.documentElement;
     if (theme === "dark") {
-      root.classList.add("dark");
+      document.documentElement.classList.add("dark");
     } else {
-      root.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
     }
+    
+    // Log theme change for debugging
+    console.log('Theme changed to:', theme);
+    console.log('Dark class exists:', document.documentElement.classList.contains('dark'));
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === "light" ? "dark" : "light"));
+    console.log('Toggle theme called, current theme:', theme);
+    setTheme(prevTheme => {
+      const newTheme = prevTheme === "light" ? "dark" : "light";
+      return newTheme;
+    });
   };
 
-  // Prevent content flash by rendering children only after mounting
-  if (!mounted) {
-    return null;
-  }
+  // For debugging purposes
+  useEffect(() => {
+    if (mounted) {
+      console.log('Initial theme state:', theme);
+      console.log('Dark class on HTML:', document.documentElement.classList.contains('dark'));
+    }
+  }, [mounted, theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -70,5 +84,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useTheme() {
   const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
   return context;
 }

@@ -53,7 +53,7 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-foreground transition-colors duration-200;
   }
 }
 
@@ -72,8 +72,46 @@
 /* Hero Section Gradient */
 .hero-gradient {
   background: linear-gradient(to bottom right, rgba(239, 246, 255, 0.8), rgba(243, 244, 246, 0.4));
+  transition: background 0.3s ease;
 }
 
 .dark .hero-gradient {
   background: linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(31, 41, 55, 0.4));
+}
+
+/* Theme Transitions */
+.dark body {
+  color-scheme: dark;
+}
+
+/* Ensure proper text colors in dark mode */
+.dark .text-gray-600 {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .text-gray-700 {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .text-gray-800 {
+  color: hsl(var(--muted-foreground));
+}
+
+.dark .border-gray-100 {
+  border-color: hsl(var(--border));
+}
+
+.dark .bg-white {
+  background-color: hsl(var(--card));
+}
+
+.dark .bg-gray-100 {
+  background-color: hsl(var(--muted));
+}
+
+/* Add a forced dark mode class for debugging */
+.force-dark {
+  color-scheme: dark;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
