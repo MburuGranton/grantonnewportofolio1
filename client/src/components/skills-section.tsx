@@ -1,8 +1,11 @@
 import { Code, Monitor, Briefcase } from "lucide-react";
 import SkillCard from "@/components/skill-card";
 import { skills } from "@/data";
+import { useTheme } from "@/context/theme-context";
 
 const SkillsSection = () => {
+  const { theme } = useTheme();
+  
   return (
     <section id="skills" className="py-20">
       <div className="container mx-auto px-6">
@@ -11,7 +14,7 @@ const SkillsSection = () => {
             <span className="text-sm font-medium">My Skills</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">My Expertise</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto`}>
             I've spent years refining my skills in front-end development. Here's a breakdown of my technical expertise and what I can bring to your project.
           </p>
         </div>

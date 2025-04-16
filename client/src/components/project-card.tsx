@@ -1,4 +1,5 @@
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import { useTheme } from "@/context/theme-context";
 
 interface Technology {
   name: string;
@@ -27,9 +28,11 @@ const ProjectCard = ({
   githubUrl,
   category
 }: ProjectCardProps) => {
+  const { theme } = useTheme();
+  
   return (
     <div className="animate-on-scroll project-card group">
-      <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+      <div className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300`}>
         <div className="relative overflow-hidden">
           <img 
             src={imageUrl}
@@ -47,7 +50,7 @@ const ProjectCard = ({
         
         <div className="p-6">
           <h3 className="font-bold text-lg mb-2">{title}</h3>
-          <p className="text-gray-600 text-sm mb-4">{description}</p>
+          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} text-sm mb-4`}>{description}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech, index) => (
               <span 
@@ -59,11 +62,14 @@ const ProjectCard = ({
             ))}
           </div>
           <div className="flex justify-between items-center">
-            <a href={projectUrl} className="text-primary hover:text-primary-dark transition-colors font-medium flex items-center text-sm">
+            <a href={projectUrl} className="text-primary hover:text-primary/80 transition-colors font-medium flex items-center text-sm">
               <span>View Project</span>
               <FiExternalLink className="h-4 w-4 ml-1" />
             </a>
-            <a href={githubUrl} className="text-gray-500 hover:text-gray-700 transition-colors">
+            <a 
+              href={githubUrl} 
+              className={`${theme === 'dark' ? 'text-gray-400 hover:text-gray-200' : 'text-gray-500 hover:text-gray-700'} transition-colors`}
+            >
               <FiGithub className="h-5 w-5" />
             </a>
           </div>

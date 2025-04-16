@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import BrandLogo from "@/components/brand-logo";
 import { brands } from "@/data";
+import { useTheme } from "@/context/theme-context";
 
 const HeroSection = () => {
+  const { theme } = useTheme();
+  
   return (
     <section id="home" className="pt-28 pb-20 hero-gradient min-h-screen flex items-center">
       <div className="container mx-auto px-6">
@@ -16,11 +19,11 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
               Hi, I'm <span className="text-primary">John Doe</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg">
+            <p className={`text-lg md:text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-8 max-w-lg`}>
               I build exceptional digital experiences that are fast, accessible, and visually appealing for the web.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button asChild className="bg-primary hover:bg-primary-dark text-white px-6 py-3 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 flex items-center">
+              <Button asChild className="bg-primary hover:bg-primary/90 text-white px-6 py-3 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 flex items-center">
                 <a href="#projects">
                   View my work
                   <motion.svg 
@@ -35,7 +38,15 @@ const HeroSection = () => {
                   </motion.svg>
                 </a>
               </Button>
-              <Button asChild variant="outline" className="border border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-6 py-3">
+              <Button 
+                asChild 
+                variant="outline" 
+                className={`
+                  ${theme === 'dark' 
+                    ? 'border-gray-700 hover:border-primary text-gray-300 hover:text-primary' 
+                    : 'border-gray-300 hover:border-primary text-gray-700 hover:text-primary'
+                  } px-6 py-3`}
+              >
                 <a href="#contact">
                   Contact me
                 </a>
@@ -43,14 +54,14 @@ const HeroSection = () => {
             </div>
             
             <div className="mt-12 flex items-center space-x-4">
-              <span className="text-sm text-gray-500">Find me on:</span>
-              <a href="#" className="text-gray-600 hover:text-primary transition-colors">
+              <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>Find me on:</span>
+              <a href="#" className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors`}>
                 <FiGithub className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-600 hover:text-primary transition-colors">
+              <a href="#" className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors`}>
                 <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-600 hover:text-primary transition-colors">
+              <a href="#" className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} hover:text-primary transition-colors`}>
                 <FiLinkedin className="w-5 h-5" />
               </a>
             </div>
@@ -60,7 +71,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute -left-6 -top-6 w-24 h-24 bg-blue-100 rounded-full opacity-70"></div>
               <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-purple-200/20 rounded-full"></div>
-              <div className="relative z-10 bg-white p-2 rounded-xl shadow-xl">
+              <div className={`relative z-10 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-2 rounded-xl shadow-xl`}>
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
                   alt="John Doe" 
@@ -71,7 +82,7 @@ const HeroSection = () => {
           </div>
         </div>
         
-        <div className="mt-24 border-t border-gray-100 pt-12 animate-on-scroll">
+        <div className={`mt-24 border-t ${theme === 'dark' ? 'border-gray-800' : 'border-gray-100'} pt-12 animate-on-scroll`}>
           <h2 className="text-xl font-semibold mb-8 text-center">Worked with brands like</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-70">
             {brands.map((brand, index) => (

@@ -1,9 +1,12 @@
 import { Link } from "wouter";
 import { FiGithub, FiTwitter, FiLinkedin } from "react-icons/fi";
+import { useTheme } from "@/context/theme-context";
 
 const Footer = () => {
+  const { theme } = useTheme();
+  
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className={`${theme === 'dark' ? 'bg-gray-950' : 'bg-gray-900'} text-white py-12`}>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
