@@ -1,11 +1,35 @@
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/context/theme-context";
+import { useEffect, useState } from "react";
 
 const AboutSection = () => {
-  const { theme } = useTheme();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  // Monitor theme changes
+  useEffect(() => {
+    const updateTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      setTheme(isDarkMode ? "dark" : "light");
+    };
+    
+    // Set initial theme
+    updateTheme();
+    
+    // Watch for changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          updateTheme();
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
   
   return (
-    <section id="about" className={`py-20 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="md:w-2/5 mb-10 md:mb-0 animate-on-scroll">
@@ -26,20 +50,20 @@ const AboutSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               A passionate Front-end Developer based in San Francisco, CA
             </h2>
-            <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               I'm a front-end developer with a passion for creating beautiful, functional, and user-centered digital experiences. With 5 years of experience in the field, I am always looking for new and innovative ways to bring my clients' visions to life.
             </p>
-            <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               I believe that design is about more than just making things look pretty – it's about solving problems and creating intuitive, enjoyable experiences for users.
             </p>
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div>
                 <h3 className="text-4xl font-bold text-primary">5+</h3>
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>Years of Experience</p>
+                <p className="text-gray-600 dark:text-gray-300">Years of Experience</p>
               </div>
               <div>
                 <h3 className="text-4xl font-bold text-primary">50+</h3>
-                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>Projects Completed</p>
+                <p className="text-gray-600 dark:text-gray-300">Projects Completed</p>
               </div>
             </div>
             <Button asChild className="bg-primary hover:bg-primary/90 text-white px-6 py-3 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 inline-flex items-center">

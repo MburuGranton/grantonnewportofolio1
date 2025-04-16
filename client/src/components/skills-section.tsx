@@ -1,10 +1,34 @@
 import { Code, Monitor, Briefcase } from "lucide-react";
 import SkillCard from "@/components/skill-card";
 import { skills } from "@/data";
-import { useTheme } from "@/context/theme-context";
+import { useEffect, useState } from "react";
 
 const SkillsSection = () => {
-  const { theme } = useTheme();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  // Monitor theme changes
+  useEffect(() => {
+    const updateTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains("dark");
+      setTheme(isDarkMode ? "dark" : "light");
+    };
+    
+    // Set initial theme
+    updateTheme();
+    
+    // Watch for changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          updateTheme();
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
   
   return (
     <section id="skills" className="py-20">
@@ -14,7 +38,7 @@ const SkillsSection = () => {
             <span className="text-sm font-medium">My Skills</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">My Expertise</h2>
-          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto`}>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             I've spent years refining my skills in front-end development. Here's a breakdown of my technical expertise and what I can bring to your project.
           </p>
         </div>
