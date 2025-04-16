@@ -1,39 +1,43 @@
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/context/theme-context";
 import { useEffect, useState } from "react";
 
+// Simplified toggle that directly manipulates the DOM without context
 const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Use useEffect to indicate component is mounted
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  // Initialize on mount
   useEffect(() => {
-    setMounted(true);
+    // Check if dark class is present on HTML element
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
   }, []);
-
-  // Handle toggle with a manual callback
-  const handleToggle = () => {
-    console.log("Theme toggle button clicked");
-    toggleTheme();
-    
-    // Force the HTML class to update immediately if needed
+  
+  // Direct DOM manipulation for theme toggle
+  const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
+    
+    // Update HTML class
     if (newTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
+    
+    // Save to localStorage
+    localStorage.setItem("theme", newTheme);
+    
+    // Update state
+    setTheme(newTheme);
+    
+    console.log(`Theme toggled to: ${newTheme}`);
   };
-
-  // Don't render anything until after client-side hydration
-  if (!mounted) return null;
 
   return (
     <Button
       variant="ghost"
       size="icon"
-      onClick={handleToggle}
+      onClick={toggleTheme}
       title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       className="rounded-full"
     >

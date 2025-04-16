@@ -3,12 +3,35 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import ThemeToggle from "@/components/theme-toggle";
-import { useTheme } from "@/context/theme-context";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useTheme();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  useEffect(() => {
+    // Check dark mode on mount and when it changes
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setTheme(isDark ? "dark" : "light");
+    };
+    
+    // Initialize
+    checkDarkMode();
+    
+    // Listen for changes to the HTML class
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          checkDarkMode();
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
