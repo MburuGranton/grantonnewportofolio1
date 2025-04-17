@@ -107,6 +107,7 @@ export const projects = [
   }
 ];
 
+// Define article structure that matches Contentful type
 export const articles = [
   {
     title: "The Future of Web Development: What to Expect in 2025",
@@ -115,7 +116,8 @@ export const articles = [
     date: "April 10, 2025",
     readTime: "5 min read",
     category: "Web Development",
-    slug: "future-of-web-development-2025"
+    slug: "future-of-web-development-2025",
+    content: null // This field allows our static data to match Contentful data structure
   },
   {
     title: "How AI is Revolutionizing UX Design",
@@ -124,7 +126,8 @@ export const articles = [
     date: "March 25, 2025",
     readTime: "7 min read",
     category: "UX Design",
-    slug: "ai-revolutionizing-ux-design"
+    slug: "ai-revolutionizing-ux-design",
+    content: null
   },
   {
     title: "Essential Tips for Effective KOL Management",
@@ -133,7 +136,8 @@ export const articles = [
     date: "March 15, 2025",
     readTime: "6 min read",
     category: "Marketing",
-    slug: "essential-tips-kol-management"
+    slug: "essential-tips-kol-management",
+    content: null
   },
   {
     title: "Building Strategic Partnerships in the Digital Age",
@@ -142,7 +146,8 @@ export const articles = [
     date: "March 5, 2025",
     readTime: "8 min read",
     category: "Business",
-    slug: "strategic-partnerships-digital-age"
+    slug: "strategic-partnerships-digital-age",
+    content: null
   },
   {
     title: "React vs Vue in 2025: Which Framework to Choose?",
@@ -151,7 +156,8 @@ export const articles = [
     date: "February 28, 2025",
     readTime: "10 min read",
     category: "Web Development",
-    slug: "react-vs-vue-2025"
+    slug: "react-vs-vue-2025",
+    content: null
   },
   {
     title: "The Art of Content Marketing for Startups",
@@ -160,6 +166,7 @@ export const articles = [
     date: "February 15, 2025",
     readTime: "6 min read",
     category: "Marketing",
-    slug: "content-marketing-for-startups"
+    slug: "content-marketing-for-startups",
+    content: null
   }
 ];
