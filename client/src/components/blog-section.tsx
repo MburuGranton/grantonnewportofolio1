@@ -2,6 +2,7 @@ import { Filter } from "lucide-react";
 import ArticleCard from "@/components/article-card";
 import { articles } from "@/data";
 import { useState, useEffect } from "react";
+import { Link } from "wouter";
 
 const BlogSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -69,12 +70,13 @@ const BlogSection = () => {
         
         {/* Show All Button */}
         <div className="text-center mt-12">
-          <a
-            href="/blog"
-            className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors duration-300"
-          >
-            View All Articles
-          </a>
+          <Link href="/blog">
+            <div
+              className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors duration-300 cursor-pointer"
+            >
+              View All Articles
+            </div>
+          </Link>
         </div>
       </div>
     </section>

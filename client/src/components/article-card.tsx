@@ -1,5 +1,5 @@
 import { Calendar, Clock, ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Link } from "wouter";
 
 interface ArticleCardProps {
   title: string;
@@ -54,13 +54,12 @@ const ArticleCard = ({
         </p>
         
         <div className="mt-auto">
-          <a 
-            href={`/blog/${slug}`} 
-            className="inline-flex items-center text-primary dark:text-blue-400 font-medium hover:underline"
-          >
-            Read More 
-            <ArrowUpRight className="h-4 w-4 ml-1" />
-          </a>
+          <Link href={`/blog/${slug}`}>
+            <div className="inline-flex items-center text-primary dark:text-blue-400 font-medium hover:underline cursor-pointer">
+              Read More 
+              <ArrowUpRight className="h-4 w-4 ml-1" />
+            </div>
+          </Link>
         </div>
       </div>
     </div>
