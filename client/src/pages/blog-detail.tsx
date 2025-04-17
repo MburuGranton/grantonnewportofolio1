@@ -116,10 +116,10 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                    <span className="text-lg font-bold">JD</span>
+                    <span className="text-lg font-bold">GM</span>
                   </div>
                   <div>
-                    <p className="font-bold">John Doe</p>
+                    <p className="font-bold">Granton Mburu</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Web Developer & Designer</p>
                   </div>
                 </div>

@@ -61,7 +61,7 @@ const Navbar = () => {
         <nav className="flex items-center justify-between">
           <Link href="/" className="text-xl font-bold flex items-center">
             <span className="text-primary mr-1">&lt;</span>
-            <span>John Doe</span>
+            <span>Granton Mburu</span>
             <span className="text-primary ml-1">/&gt;</span>
           </Link>
           

@@ -48,7 +48,7 @@ const AboutSection = () => {
               <span className="text-sm font-medium">About Me</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              A passionate Front-end Developer based in San Francisco, CA
+              A passionate Front-end Developer . 
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
               I'm a front-end developer with a passion for creating beautiful, functional, and user-centered digital experiences. With 5 years of experience in the field, I am always looking for new and innovative ways to bring my clients' visions to life.
@@ -58,11 +58,11 @@ const AboutSection = () => {
             </p>
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div>
-                <h3 className="text-4xl font-bold text-primary">5+</h3>
+                <h3 className="text-4xl font-bold text-primary">4+</h3>
                 <p className="text-gray-600 dark:text-gray-300">Years of Experience</p>
               </div>
               <div>
-                <h3 className="text-4xl font-bold text-primary">50+</h3>
+                <h3 className="text-4xl font-bold text-primary">10+</h3>
                 <p className="text-gray-600 dark:text-gray-300">Projects Completed</p>
               </div>
             </div>

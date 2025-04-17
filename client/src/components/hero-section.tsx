@@ -41,7 +41,7 @@ const HeroSection = () => {
               <span className="text-sm font-medium">Front-end Developer</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-              Hi, I'm <span className="text-primary">Jane Smith</span>
+              Hi, I'm <span className="text-primary">Granton Mburu</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
               I build exceptional digital experiences that are fast, accessible, and visually appealing for the web.
@@ -94,7 +94,7 @@ const HeroSection = () => {
               <div className="relative z-10 bg-white dark:bg-gray-800 p-2 rounded-xl shadow-xl">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
-                  alt="John Doe" 
+                  alt="Granton Mburu" 
                   className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-lg"
                 />
               </div>

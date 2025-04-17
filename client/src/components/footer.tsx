@@ -36,7 +36,7 @@ const Footer = () => {
           <div>
             <Link href="/" className="text-xl font-bold flex items-center">
               <span className="text-primary mr-1">&lt;</span>
-              <span>John Doe</span>
+              <span>Granton Mburu</span>
               <span className="text-primary ml-1">/&gt;</span>
             </Link>
             <p className="text-gray-400 mt-2">Front-end Developer</p>
@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} John Doe. All rights reserved.</p>
+          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Granton Mburu. All rights reserved.</p>
           <div className="mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
             <span className="text-gray-600 mx-3">|</span>
