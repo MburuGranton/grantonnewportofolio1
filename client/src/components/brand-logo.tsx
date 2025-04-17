@@ -1,4 +1,5 @@
-import { SiAirbnb, SiSlack, SiSpotify, SiShopify } from "react-icons/si";
+import { SiCoinbase } from "react-icons/si";
+import { Box } from "lucide-react";
 
 interface BrandLogoProps {
   name: string;
@@ -8,16 +9,12 @@ interface BrandLogoProps {
 const BrandLogo = ({ name, icon }: BrandLogoProps) => {
   const getIcon = () => {
     switch (icon) {
-      case "airbnb":
-        return <SiAirbnb className="h-8 w-auto" />;
-      case "slack":
-        return <SiSlack className="h-8 w-auto" />;
-      case "spotify":
-        return <SiSpotify className="h-8 w-auto" />;
-      case "shopify":
-        return <SiShopify className="h-8 w-auto" />;
+      case "base":
+        return <SiCoinbase className="h-8 w-auto" />;
+      case "cube":
+        return <Box className="h-8 w-auto" />;
       default:
-        return null;
+        return <div className="h-8 flex items-center font-bold text-primary">{name}</div>;
     }
   };
 

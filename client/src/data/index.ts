@@ -1,19 +1,19 @@
 export const brands = [
   {
-    name: "Airbnb",
-    icon: "airbnb"
+    name: "CV VC",
+    icon: "cube" // Using a generic icon since specific logo might not be available
   },
   {
-    name: "Slack",
-    icon: "slack"
+    name: "Base",
+    icon: "base"
   },
   {
-    name: "Spotify",
-    icon: "spotify"
+    name: "Lisk",
+    icon: "cube" // Using a generic icon since specific logo might not be available
   },
   {
-    name: "Shopify",
-    icon: "shopify"
+    name: "Berachain",
+    icon: "cube" // Using a generic icon since specific logo might not be available
   }
 ];
 
