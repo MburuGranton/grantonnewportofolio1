@@ -89,7 +89,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Phone</h3>
-                    <p className="text-gray-600 dark:text-gray-300">(123) 456-7890</p>
+                    <p className="text-gray-600 dark:text-gray-300">+254 705 146 863</p>
                   </div>
                 </div>
                 
@@ -99,7 +99,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-300">hello@johndoe.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">mburugranton@gmail.com</p>
                   </div>
                 </div>
                 
@@ -109,19 +109,19 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h3 className="font-medium mb-1">Location</h3>
-                    <p className="text-gray-600 dark:text-gray-300">San Francisco, California</p>
+                    <p className="text-gray-600 dark:text-gray-300">Kenya</p>
                   </div>
                 </div>
               </div>
               
               <div className="flex space-x-4">
-                <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+                <a href="https://github.com/MburuGranton" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                   <FiGithub className="w-5 h-5" />
                 </a>
-                <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+                <a href="https://x.com/GrantonMburu" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                   <FiTwitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+                <a href="https://www.linkedin.com/in/granton-nyange-6a00401a1/" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                   <FiLinkedin className="w-5 h-5" />
                 </a>
                 <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">

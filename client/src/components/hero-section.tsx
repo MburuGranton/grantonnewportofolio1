@@ -93,9 +93,15 @@ const HeroSection = () => {
               <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-purple-200/20 rounded-full"></div>
               <div className="relative z-10 bg-white dark:bg-gray-800 p-2 rounded-xl shadow-xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                  src="https://lh3.googleusercontent.com/d/1tX32B-yJZcpjuKcksD7pkLjbPb2OiPV8" 
                   alt="Granton Mburu" 
                   className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-lg"
+                  onError={(e) => {
+                    // Fallback to a reliable placeholder if Google Drive image fails
+                    const target = e.target as HTMLImageElement;
+                    target.onerror = null;
+                    target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80";
+                  }}
                 />
               </div>
             </div>
