@@ -71,6 +71,7 @@ const Navbar = () => {
             <a href="#about" className="hover:text-primary transition-colors">About</a>
             <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
             <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
+            <a href="#blog" className="hover:text-primary transition-colors">Blog</a>
             <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
             <Button className="bg-primary hover:bg-primary/90 text-white">Resume</Button>
             <ThemeToggle />
@@ -97,6 +98,7 @@ const Navbar = () => {
               <a href="#about" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">About</a>
               <a href="#skills" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Skills</a>
               <a href="#projects" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Projects</a>
+              <a href="#blog" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Blog</a>
               <a href="#contact" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Contact</a>
               <Button className="bg-primary hover:bg-primary/90 text-white w-full">Resume</Button>
             </div>

@@ -106,3 +106,60 @@ export const projects = [
     category: "Web Development"
   }
 ];
+
+export const articles = [
+  {
+    title: "The Future of Web Development: What to Expect in 2025",
+    excerpt: "Explore the emerging trends and technologies that will shape the web development landscape in the coming years.",
+    imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+    date: "April 10, 2025",
+    readTime: "5 min read",
+    category: "Web Development",
+    slug: "future-of-web-development-2025"
+  },
+  {
+    title: "How AI is Revolutionizing UX Design",
+    excerpt: "Artificial intelligence is changing how we approach user experience design. Learn about the latest tools and methodologies.",
+    imageUrl: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+    date: "March 25, 2025",
+    readTime: "7 min read",
+    category: "UX Design",
+    slug: "ai-revolutionizing-ux-design"
+  },
+  {
+    title: "Essential Tips for Effective KOL Management",
+    excerpt: "Key opinion leaders can transform your brand's reach. Discover strategies for building successful KOL relationships.",
+    imageUrl: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80",
+    date: "March 15, 2025",
+    readTime: "6 min read",
+    category: "Marketing",
+    slug: "essential-tips-kol-management"
+  },
+  {
+    title: "Building Strategic Partnerships in the Digital Age",
+    excerpt: "Learn how to identify, initiate, and nurture valuable business partnerships in an increasingly digital business landscape.",
+    imageUrl: "https://images.unsplash.com/photo-1554774853-719586f82d77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+    date: "March 5, 2025",
+    readTime: "8 min read",
+    category: "Business",
+    slug: "strategic-partnerships-digital-age"
+  },
+  {
+    title: "React vs Vue in 2025: Which Framework to Choose?",
+    excerpt: "A comprehensive comparison of React and Vue.js in 2025, helping you decide which framework is best for your next project.",
+    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+    date: "February 28, 2025",
+    readTime: "10 min read",
+    category: "Web Development",
+    slug: "react-vs-vue-2025"
+  },
+  {
+    title: "The Art of Content Marketing for Startups",
+    excerpt: "Discover effective content marketing strategies tailored for startups with limited resources but ambitious growth goals.",
+    imageUrl: "https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1706&q=80",
+    date: "February 15, 2025",
+    readTime: "6 min read",
+    category: "Marketing",
+    slug: "content-marketing-for-startups"
+  }
+];
