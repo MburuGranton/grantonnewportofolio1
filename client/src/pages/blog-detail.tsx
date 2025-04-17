@@ -46,10 +46,10 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
         <div className="container mx-auto px-6 max-w-4xl">
           {/* Back Button */}
           <Link href="/#blog">
-            <a className="inline-flex items-center text-primary hover:underline mb-8">
+            <div className="inline-flex items-center text-primary hover:underline mb-8 cursor-pointer">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Blog
-            </a>
+            </div>
           </Link>
           
           {/* Article Header */}
