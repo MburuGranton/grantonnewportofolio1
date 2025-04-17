@@ -41,7 +41,7 @@ const HeroSection = () => {
               <span className="text-sm font-medium">Front-end Developer</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-              Hi, I'm <span className="text-primary">John Doe</span>
+              Hi, I'm <span className="text-primary">Jane Smith</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
               I build exceptional digital experiences that are fast, accessible, and visually appealing for the web.
