@@ -1,117 +1,90 @@
-# GitHub Pages Deployment Guide
+# Deploying Your Portfolio to GitHub Pages
 
-Follow these steps to deploy your portfolio website to GitHub Pages:
+This guide will help you deploy your portfolio website to GitHub Pages, making it accessible online for free.
 
-## 1. Create a GitHub Repository
-- Go to [GitHub](https://github.com) and sign in to your account
-- Click on the "+" icon in the top-right corner and select "New repository"
-- Name your repository (e.g., "portfolio-website")
-- Choose if you want it public or private
-- Click "Create repository"
+## Prerequisites
 
-## 2. Configure Git
+- A GitHub account
+- Git installed on your computer
+
+## Step 1: Create a GitHub Repository
+
+1. Log in to your GitHub account
+2. Click the "+" icon in the top right corner and select "New repository"
+3. Name your repository (e.g., "portfolio")
+4. Make it public
+5. Click "Create repository"
+
+## Step 2: Initialize Git in Your Project
+
+If you haven't already set up Git in your project:
+
 ```bash
-# Set your Git identity
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-
-# Connect your local repository to GitHub
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+git init
+git add .
+git commit -m "Initial commit"
 ```
 
-## 3. Push Your Code to GitHub
+## Step 3: Connect Your Local Repository to GitHub
+
 ```bash
-# Add all files
-git add .
-
-# Commit changes
-git commit -m "Initial commit"
-
-# Push to GitHub
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+git branch -M main
 git push -u origin main
 ```
 
-## 4. Deploy Static Files to GitHub Pages
+Replace `YOUR_USERNAME` with your GitHub username and `YOUR_REPOSITORY_NAME` with your repository name.
 
-After pushing your code to GitHub:
+## Step 4: Update the Deployment Script
 
-1. Go to your repository on GitHub
-2. Go to Settings > Pages
-3. Under "Source", select "GitHub Actions"
-4. Choose a workflow template for "Static HTML"
-5. Customize the workflow file as needed to build your project
-6. Commit the workflow file
+Make sure to update the `deploy-gh-pages.js` file with your GitHub username and repository name:
 
-## 5. Custom Build for GitHub Pages
-
-For a React application deployed to GitHub Pages at a non-root URL, you'll need to:
-
-1. Create a `.github/workflows/static.yml` workflow file with appropriate build commands
-2. Configure your application to handle the repository name in URLs
-
-## Example GitHub Actions Workflow File
-
-```yaml
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
-
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'npm'
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire built files from dist/public
-          path: './dist/public'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+```javascript
+// Change these values to your own GitHub information
+const GITHUB_USERNAME = 'YOUR_USERNAME'; // Replace with your GitHub username
+const REPO_NAME = 'YOUR_REPOSITORY_NAME'; // Replace with your repository name
 ```
 
-## Important Notes
+## Step 5: Run the Deployment Script
 
-1. **Base Path**: When your site is deployed to a subdirectory like `username.github.io/repository-name`, links in your application need to account for this base path.
+```bash
+./deploy.sh
+```
 
-2. **Routing**: For single-page applications with client-side routing, you may need a 404.html redirect pattern to support direct URL access.
+This will:
+1. Build your project
+2. Deploy it to the `gh-pages` branch of your repository
 
-3. **Assets**: Make sure all your assets use relative paths or paths that include the repository name.
+## Step 6: Configure GitHub Pages
 
-Your site will be available at `https://YOUR_USERNAME.github.io/YOUR_REPOSITORY_NAME` once deployment is complete.
+1. Go to your repository on GitHub
+2. Click on "Settings"
+3. Navigate to "Pages" in the left sidebar
+4. Under "Source", select the `gh-pages` branch
+5. Click "Save"
+
+Your site will be published at `https://YOUR_USERNAME.github.io/YOUR_REPOSITORY_NAME`.
+
+## Updating Your Site
+
+Whenever you make changes to your site:
+
+1. Commit your changes to your main branch:
+   ```bash
+   git add .
+   git commit -m "Description of changes"
+   git push origin main
+   ```
+
+2. Run the deployment script again:
+   ```bash
+   ./deploy.sh
+   ```
+
+Your updated site will be deployed to GitHub Pages.
+
+## Troubleshooting
+
+- **First deployment not showing up?** It can take up to 10 minutes for your site to appear after the first deployment.
+- **Seeing a 404 error?** Make sure your repository is public and that GitHub Pages is enabled in your repository settings.
+- **Styles or assets missing?** Ensure all paths in your code are relative and don't start with a forward slash.
