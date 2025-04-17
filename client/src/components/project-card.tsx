@@ -1,4 +1,5 @@
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import { Link } from "wouter";
 import { useEffect, useState } from "react";
 
 interface Technology {
@@ -86,12 +87,16 @@ const ProjectCard = ({
             ))}
           </div>
           <div className="flex justify-between items-center mt-auto">
-            <a href={projectUrl} className="text-primary hover:text-primary/80 transition-colors font-medium flex items-center text-sm">
-              <span>View Project</span>
-              <FiExternalLink className="h-4 w-4 ml-1" />
-            </a>
+            <Link href={`/project/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
+              <div className="text-primary hover:text-primary/80 transition-colors font-medium flex items-center text-sm cursor-pointer">
+                <span>View Project</span>
+                <FiExternalLink className="h-4 w-4 ml-1" />
+              </div>
+            </Link>
             <a 
               href={githubUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
             >
               <FiGithub className="h-5 w-5" />
