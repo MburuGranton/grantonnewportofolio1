@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { Filter } from "lucide-react";
-import { articles } from "@/data";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import ArticleCard from "@/components/article-card";
 import { checkInView } from "@/lib/animation";
+import { useArticles } from "@/hooks/use-contentful";
+import { Skeleton } from "@/components/ui/skeleton"; 
 
 const Blog = () => {
+  // Fetch articles from Contentful
+  const { data: articles = [], isLoading, error } = useArticles();
+  
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const categories = ["All", ...Array.from(new Set(articles.map(article => article.category)))];
+  const categories = articles.length > 0 
+    ? ["All", ...Array.from(new Set(articles.map(article => article.category)))]
+    : ["All"];
   const [filteredArticles, setFilteredArticles] = useState(articles);
   
   useEffect(() => {
@@ -17,7 +23,7 @@ const Blog = () => {
     } else {
       setFilteredArticles(articles.filter(article => article.category === selectedCategory));
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, articles]);
   
   useEffect(() => {
     // Set up animation on scroll
@@ -72,22 +78,64 @@ const Blog = () => {
             ))}
           </div>
           
+          {/* Error State */}
+          {error && (
+            <div className="text-center p-8 bg-red-50 dark:bg-red-900/20 rounded-lg mb-8">
+              <p className="text-red-600 dark:text-red-400">
+                Unable to load articles. Please try again later.
+              </p>
+            </div>
+          )}
+          
+          {/* Loading State */}
+          {isLoading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
+              {[1, 2, 3, 4, 5, 6].map((item) => (
+                <div key={item} className="h-full">
+                  <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full">
+                    <Skeleton className="h-48 w-full" />
+                    <div className="p-6">
+                      <Skeleton className="h-6 w-2/3 mb-2" />
+                      <Skeleton className="h-4 w-full mb-4" />
+                      <Skeleton className="h-4 w-full mb-2" />
+                      <Skeleton className="h-4 w-3/4" />
+                      <div className="mt-4 flex justify-between items-center">
+                        <Skeleton className="h-4 w-24" />
+                        <Skeleton className="h-4 w-16" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          
           {/* Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
-            {filteredArticles.map((article, index) => (
-              <div key={index} className="h-full">
-                <ArticleCard
-                  title={article.title}
-                  excerpt={article.excerpt}
-                  imageUrl={article.imageUrl}
-                  date={article.date}
-                  readTime={article.readTime}
-                  category={article.category}
-                  slug={article.slug}
-                />
-              </div>
-            ))}
-          </div>
+          {!isLoading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
+              {filteredArticles.length > 0 ? (
+                filteredArticles.map((article, index) => (
+                  <div key={index} className="h-full">
+                    <ArticleCard
+                      title={article.title}
+                      excerpt={article.excerpt}
+                      imageUrl={article.imageUrl}
+                      date={article.date}
+                      readTime={article.readTime}
+                      category={article.category}
+                      slug={article.slug}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-3 text-center p-12">
+                  <p className="text-gray-500 dark:text-gray-400">
+                    No articles found in this category. Try selecting a different category.
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </main>
       
