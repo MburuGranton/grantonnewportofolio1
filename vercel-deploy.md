@@ -81,6 +81,24 @@ Your project is now optimized for Vercel deployment with:
 
 ## Troubleshooting
 
+### Blank Screen Issue
+If you see a blank screen after deployment:
+
+1. **Check Vercel Build Logs**:
+   - Go to your Vercel dashboard
+   - Click on your project
+   - Check the "Functions" and "Deployments" tabs for errors
+
+2. **Verify Build Output**:
+   - Make sure `dist/public/index.html` exists after build
+   - Check that the build command completed successfully
+
+3. **Fix Common Issues**:
+   - Ensure `outputDirectory` in `vercel.json` points to `dist/public`
+   - Remove any conflicting routing configurations
+   - Make sure environment variables are set correctly
+
+### Other Issues
 - **Build fails**: Check that all dependencies are in `package.json`
 - **Environment variables not working**: Ensure they're added in Vercel dashboard
 - **API routes not working**: Check that functions are in the `/api` directory
