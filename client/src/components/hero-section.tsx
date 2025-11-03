@@ -38,13 +38,13 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="md:w-1/2 animate-on-scroll">
             <div className="inline-block px-3 py-1 rounded-full bg-blue-100 text-primary mb-6">
-              <span className="text-sm font-medium">Front-end Developer</span>
+              <span className="text-sm font-medium">Building the bridge between innovation and impact.</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
               Hi, I'm <span className="text-primary">Granton Mburu</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
-              I build exceptional digital experiences that are fast, accessible, and visually appealing for the web.
+             I craft partnerships, lead communities, and bring bold ideas to life across Africa’s Web3 and tech ecosystem.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button asChild className="bg-primary hover:bg-primary/90 text-white px-6 py-3 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 flex items-center">
