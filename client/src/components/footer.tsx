@@ -39,7 +39,7 @@ const Footer = () => {
               <span>Granton Mburu</span>
               <span className="text-primary ml-1">/&gt;</span>
             </Link>
-            <p className="text-gray-400 mt-2">Front-end Developer</p>
+            <p className="text-gray-400 mt-2">Web3 Creative Builder / Community Strategist</p>
           </div>
           
           <div className="mt-8 md:mt-0">
