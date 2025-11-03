@@ -48,13 +48,14 @@ const AboutSection = () => {
               <span className="text-sm font-medium">About Me</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              A passionate Front-end Developer . 
+              I’m passionate about connecting innovation with people.
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              I'm a front-end developer with a passion for creating beautiful, functional, and user-centered digital experiences. With 5 years of experience in the field, I am always looking for new and innovative ways to bring my clients' visions to life.
+             Over the past few years, I’ve led high-impact initiatives with brands like Tether, Lisk, and Base — empowering thousands of young developers and blockchain enthusiasts across East Africa.
+            
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              I believe that design is about more than just making things look pretty – it's about solving problems and creating intuitive, enjoyable experiences for users.
+              My work sits at the intersection of strategy, partnerships, and community building — turning ambitious ideas into measurable results.
             </p>
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div>
