@@ -38,7 +38,7 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="md:w-1/2 animate-on-scroll">
             <div className="inline-block px-3 py-1 rounded-full bg-blue-100 text-primary mb-6">
-              <span className="text-sm font-medium">Building the bridge between innovation and impact.</span>
+              <span className="text-sm font-medium">Bridging innovation and impact.</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
               Hi, I'm <span className="text-primary">Granton Mburu</span>
