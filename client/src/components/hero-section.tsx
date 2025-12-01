@@ -93,7 +93,7 @@ const HeroSection = () => {
               <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-purple-200/20 rounded-full"></div>
               <div className="relative z-10 bg-white dark:bg-gray-800 p-2 rounded-xl shadow-xl">
                 <img 
-                  src="https://drive.google.com/uc?export=view&id=1tX32B-yJZcpjuKcksD7pkLjbPb2OiPV8=w800" 
+                  src="https://drive.google.com/thumbnail?id=1tX32B-yJZcpjuKcksD7pkLjbPb2OiPV8=w800" 
                   alt="John Doe" 
                   className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-lg"
                   onError={(e) => {
