@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { PhoneCall, Mail, MapPin } from "lucide-react";
 import { FiGithub, FiTwitter, FiLinkedin, FiDribbble } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 
 type FormValues = {
   name: string;
@@ -21,6 +21,11 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>();
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  }, []);
   
   // Monitor theme changes
   useEffect(() => {
@@ -49,13 +54,24 @@ const ContactSection = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      await apiRequest("POST", "/api/contact", data);
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+          to_email: "mburugranton@gmail.com",
+        }
+      );
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
       reset();
     } catch (error) {
+      console.error("EmailJS error:", error);
       toast({
         title: "Error sending message",
         description: "Please try again later.",
