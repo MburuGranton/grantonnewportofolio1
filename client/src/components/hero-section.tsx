@@ -103,7 +103,7 @@ const HeroSection = () => {
               {/* Main image */}
               <div className="relative bg-card rounded-2xl overflow-hidden shadow-elevated max-w-sm mx-auto">
                 <img 
-                  src="https://drive.google.com/thumbnail?id=1tX32B-yJZcpjuKcksD7pkLjbPb2OiPV8" 
+                  src="https://drive.google.com/thumbnail?id=1rlGB4t-HO1ca8YBa2lUEon9-w03nleuU&sz=w1000" 
                   alt="Granton Mburu" 
                   className="w-full aspect-square object-cover"
                   onError={(e) => {

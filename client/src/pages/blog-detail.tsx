@@ -194,10 +194,26 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
                   </div>
                   <div>
                     <p className="font-bold">Granton Mburu</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Web Developer & Designer</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Web3 Creative Builder / Community Strategist</p>
                   </div>
                 </div>
-                <Button variant="outline" size="sm" className="flex items-center">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex items-center"
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: article.title,
+                        text: article.excerpt,
+                        url: window.location.href,
+                      });
+                    } else {
+                      navigator.clipboard.writeText(window.location.href);
+                      alert('Link copied to clipboard!');
+                    }
+                  }}
+                >
                   <Share2 className="h-4 w-4 mr-2" />
                   Share
                 </Button>
