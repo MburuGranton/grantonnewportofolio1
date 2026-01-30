@@ -33,19 +33,17 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="py-20">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-on-scroll">
-          <div className="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900 text-primary mb-6">
-            <span className="text-sm font-medium">My Skills</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Expertise</h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <div className="text-center mb-12 animate-on-scroll">
+          <span className="inline-block text-sm font-medium text-primary mb-3">My Skills</span>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">My Expertise</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             I've spent years refining my skills across multiple domains. Here's a breakdown of my technical and non-technical expertise and what I can bring to your project.
           </p>
         </div>
         
         <div className="mb-12">
-          <h3 className="text-2xl font-bold mb-6 text-center">Technical Skills</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h3 className="text-xl font-semibold mb-6 text-center">Technical Skills</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <SkillCard 
               title="Front-end Development" 
               description="Building responsive websites and web applications using modern HTML, CSS, and JavaScript frameworks."
@@ -76,8 +74,8 @@ const SkillsSection = () => {
         </div>
         
         <div>
-          <h3 className="text-2xl font-bold mb-6 text-center">Business & Management Skills</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h3 className="text-xl font-semibold mb-6 text-center">Business & Management Skills</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <SkillCard 
               title="Marketing" 
               description="Developing and executing marketing strategies to drive brand awareness and customer acquisition."

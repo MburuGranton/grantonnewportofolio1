@@ -22,17 +22,17 @@ const SkillCard = ({
   skills
 }: SkillCardProps) => {
   return (
-    <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 animate-on-scroll h-full flex flex-col">
-      <div className={`${iconColor} ${iconBgColor} w-14 h-14 rounded-lg flex items-center justify-center mb-6`}>
+    <div className="bg-card border border-border p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 animate-on-scroll h-full flex flex-col">
+      <div className={`${iconColor} ${iconBgColor} w-12 h-12 rounded-lg flex items-center justify-center mb-5`}>
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-4">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300 mb-6 flex-grow">{description}</p>
+      <h3 className="text-lg font-semibold mb-3">{title}</h3>
+      <p className="text-muted-foreground text-sm mb-5 flex-grow leading-relaxed">{description}</p>
       
       <div className="grid grid-cols-2 gap-2">
         {skills.map((skill, index) => (
-          <div key={index} className="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 text-center">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <div key={index} className="bg-muted rounded-lg py-2 px-3 text-center">
+            <span className="text-xs font-medium text-muted-foreground">
               {skill.name}
             </span>
           </div>

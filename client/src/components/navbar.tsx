@@ -53,9 +53,11 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`fixed w-full z-50 border-b transition-colors duration-200 
-      bg-white/80 dark:bg-gray-900/90 backdrop-blur-sm border-gray-100 dark:border-gray-800
-      ${isScrolled ? 'shadow-sm dark:shadow-md dark:shadow-black/10' : ''}
+    <header className={`fixed w-full z-50 transition-all duration-200 
+      ${isScrolled 
+        ? 'bg-background/95 backdrop-blur-sm border-b border-border shadow-sm' 
+        : 'bg-transparent border-b border-transparent'
+      }
     `}>
       <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
@@ -67,13 +69,13 @@ const Navbar = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="hover:text-primary transition-colors">Home</a>
-            <a href="#about" className="hover:text-primary transition-colors">About</a>
-            <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-            <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-            <a href="#blog" className="hover:text-primary transition-colors">Blog</a>
-            <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-            <Button className="bg-primary hover:bg-primary/90 text-white">Resume</Button>
+            <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
+            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
+            <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
+            <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+            <a href="#blog" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+            <Button className="bg-primary hover:bg-primary/90 text-white px-5 rounded-lg">Resume</Button>
             <ThemeToggle />
           </div>
           
@@ -92,15 +94,15 @@ const Navbar = () => {
         
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 animate-fadeIn">
+          <div className="md:hidden py-4 bg-card border border-border rounded-xl mt-4 px-4 shadow-sm">
             <div className="flex flex-col space-y-4">
-              <a href="#home" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Home</a>
-              <a href="#about" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">About</a>
-              <a href="#skills" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Skills</a>
-              <a href="#projects" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Projects</a>
-              <a href="#blog" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Blog</a>
-              <a href="#contact" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors py-2">Contact</a>
-              <Button className="bg-primary hover:bg-primary/90 text-white w-full">Resume</Button>
+              <a href="#home" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Home</a>
+              <a href="#about" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">About</a>
+              <a href="#skills" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Skills</a>
+              <a href="#projects" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Projects</a>
+              <a href="#blog" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Blog</a>
+              <a href="#contact" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Contact</a>
+              <Button className="bg-primary hover:bg-primary/90 text-white w-full rounded-lg">Resume</Button>
             </div>
           </div>
         )}

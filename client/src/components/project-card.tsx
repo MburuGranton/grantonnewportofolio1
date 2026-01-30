@@ -56,48 +56,46 @@ const ProjectCard = ({
   }, []);
   
   return (
-    <div className="animate-on-scroll project-card group h-full">
-      <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 dark:bg-gray-800 bg-white h-full flex flex-col">
+    <div className="animate-on-scroll group h-full">
+      <div className="bg-card rounded-xl overflow-hidden h-full flex flex-col border border-border hover:border-primary/30 transition-colors duration-300 shadow-sm hover:shadow-md">
         <div className="relative overflow-hidden">
           <img 
             src={imageUrl}
             alt={title} 
-            className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
           />
           
-          <div className="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end opacity-0 transition-opacity duration-300 p-6 group-hover:opacity-100">
-            <div>
-              <h4 className="text-white font-bold text-lg">{title}</h4>
-              <p className="text-gray-200 text-sm">{subtitle}</p>
-            </div>
+          {/* Category badge */}
+          <div className="absolute top-3 left-3">
+            <span className="bg-background/90 backdrop-blur-sm text-xs font-medium px-3 py-1.5 rounded-md border border-border">{category}</span>
           </div>
         </div>
         
-        <div className="p-6 flex flex-col flex-grow">
-          <h3 className="font-bold text-lg mb-2">{title}</h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">{description}</p>
+        <div className="p-5 flex flex-col flex-grow">
+          <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{title}</h3>
+          <p className="text-muted-foreground text-sm mb-4 flex-grow leading-relaxed">{description}</p>
           <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech, index) => (
               <span 
                 key={index} 
-                className={`px-2 py-1 text-xs rounded-full ${tech.bgColor} ${tech.color}`}
+                className="bg-muted text-muted-foreground text-xs px-2.5 py-1 rounded-md"
               >
                 {tech.name}
               </span>
             ))}
           </div>
-          <div className="flex justify-between items-center mt-auto">
+          <div className="flex justify-between items-center mt-auto pt-4 border-t border-border">
             <Link href={`/project/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
-              <div className="text-primary hover:text-primary/80 transition-colors font-medium flex items-center text-sm cursor-pointer">
+              <div className="text-primary font-medium flex items-center text-sm cursor-pointer hover:underline">
                 <span>View Project</span>
-                <FiExternalLink className="h-4 w-4 ml-1" />
+                <FiExternalLink className="h-4 w-4 ml-1.5" />
               </div>
             </Link>
             <a 
               href={githubUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+              className="p-2 rounded-lg border border-border hover:border-primary/50 hover:text-primary transition-colors"
             >
               <FiGithub className="h-5 w-5" />
             </a>

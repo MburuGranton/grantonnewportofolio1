@@ -93,85 +93,83 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6">
-        <div className="bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 rounded-3xl p-8 md:p-12 lg:p-16 shadow-xl">
+        <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="animate-on-scroll">
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100 text-primary mb-6">
-                <span className="text-sm font-medium">Contact Me</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <span className="inline-block text-sm font-medium text-primary mb-4">Contact Me</span>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-4">
                 Let's work together on your next project
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
+              <p className="text-muted-foreground mb-8 leading-relaxed">
                 I'm currently available for freelance work. If you have a project that needs some creative direction, development work, or improvement, feel free to contact me.
               </p>
               
-              <div className="space-y-6 mb-8">
+              <div className="space-y-5 mb-8">
                 <div className="flex items-start">
-                  <div className="text-primary bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center mr-4 mt-1">
+                  <div className="text-primary bg-primary/10 w-10 h-10 rounded-lg flex items-center justify-center mr-4">
                     <PhoneCall className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">Phone</h3>
-                    <p className="text-gray-600 dark:text-gray-300">+254 705 146 863</p>
+                    <h3 className="font-medium mb-0.5">Phone</h3>
+                    <p className="text-muted-foreground text-sm">+254 705 146 863</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="text-primary bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center mr-4 mt-1">
+                  <div className="text-primary bg-primary/10 w-10 h-10 rounded-lg flex items-center justify-center mr-4">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-300">mburugranton@gmail.com</p>
+                    <h3 className="font-medium mb-0.5">Email</h3>
+                    <p className="text-muted-foreground text-sm">mburugranton@gmail.com</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className="text-primary bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center mr-4 mt-1">
+                  <div className="text-primary bg-primary/10 w-10 h-10 rounded-lg flex items-center justify-center mr-4">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-medium mb-1">Location</h3>
-                    <p className="text-gray-600 dark:text-gray-300">Kenya</p>
+                    <h3 className="font-medium mb-0.5">Location</h3>
+                    <p className="text-muted-foreground text-sm">Kenya</p>
                   </div>
                 </div>
               </div>
               
-              <div className="flex space-x-4">
-                <a href="https://github.com/MburuGranton" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+              <div className="flex space-x-3">
+                <a href="https://github.com/MburuGranton" className="text-muted-foreground hover:text-primary transition-colors w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:border-primary/50">
                   <FiGithub className="w-5 h-5" />
                 </a>
-                <a href="https://x.com/GrantonMburu" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+                <a href="https://x.com/GrantonMburu" className="text-muted-foreground hover:text-primary transition-colors w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:border-primary/50">
                   <FiTwitter className="w-5 h-5" />
                 </a>
-                <a href="https://www.linkedin.com/in/granton-nyange-6a00401a1/" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+                <a href="https://www.linkedin.com/in/granton-nyange-6a00401a1/" className="text-muted-foreground hover:text-primary transition-colors w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:border-primary/50">
                   <FiLinkedin className="w-5 h-5" />
                 </a>
-                <a href="#" className="bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:border-primary/50">
                   <FiDribbble className="w-5 h-5" />
                 </a>
               </div>
             </div>
             
             <div className="animate-on-scroll">
-              <form onSubmit={handleSubmit(onSubmit)} className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
-                <h3 className="text-xl font-bold mb-6">Send me a message</h3>
+              <form onSubmit={handleSubmit(onSubmit)} className="bg-background border border-border p-6 rounded-xl">
+                <h3 className="text-lg font-semibold mb-5">Send me a message</h3>
                 
-                <div className="space-y-6">
+                <div className="space-y-5">
                   <div>
-                    <Label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</Label>
+                    <Label htmlFor="name" className="block text-sm font-medium mb-1.5">Name</Label>
                     <Input
                       id="name"
                       {...register("name", { required: "Name is required" })}
-                      className="w-full px-4 py-3 border bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                      className="w-full"
                       placeholder="Your name"
                     />
                     {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
                   </div>
                   
                   <div>
-                    <Label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</Label>
+                    <Label htmlFor="email" className="block text-sm font-medium mb-1.5">Email</Label>
                     <Input
                       id="email"
                       type="email"
@@ -182,30 +180,30 @@ const ContactSection = () => {
                           message: "Invalid email address"
                         }
                       })}
-                      className="w-full px-4 py-3 border bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                      className="w-full"
                       placeholder="Your email"
                     />
                     {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
                   </div>
                   
                   <div>
-                    <Label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</Label>
+                    <Label htmlFor="subject" className="block text-sm font-medium mb-1.5">Subject</Label>
                     <Input
                       id="subject"
                       {...register("subject", { required: "Subject is required" })}
-                      className="w-full px-4 py-3 border bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                      className="w-full"
                       placeholder="Subject"
                     />
                     {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>}
                   </div>
                   
                   <div>
-                    <Label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</Label>
+                    <Label htmlFor="message" className="block text-sm font-medium mb-1.5">Message</Label>
                     <Textarea
                       id="message"
                       {...register("message", { required: "Message is required" })}
                       rows={4}
-                      className="w-full px-4 py-3 border bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                      className="w-full"
                       placeholder="Your message"
                     />
                     {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
@@ -214,7 +212,7 @@ const ContactSection = () => {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 flex justify-center items-center"
+                    className="w-full bg-primary hover:bg-primary/90 text-white"
                   >
                     <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                     {!isSubmitting && (

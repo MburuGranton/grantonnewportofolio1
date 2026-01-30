@@ -30,7 +30,7 @@ const Footer = () => {
   }, []);
   
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12">
+    <footer className="bg-foreground text-background py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
@@ -39,30 +39,30 @@ const Footer = () => {
               <span>Granton Mburu</span>
               <span className="text-primary ml-1">/&gt;</span>
             </Link>
-            <p className="text-gray-400 mt-2">Web3 Creative Builder / Community Strategist</p>
+            <p className="text-background/60 mt-2 text-sm">Web3 Creative Builder / Community Strategist</p>
           </div>
           
-          <div className="mt-8 md:mt-0">
-            <div className="flex justify-center space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+          <div className="mt-6 md:mt-0">
+            <div className="flex justify-center space-x-4">
+              <a href="#" className="text-background/60 hover:text-primary transition-colors">
                 <FiGithub className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-background/60 hover:text-primary transition-colors">
                 <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="#" className="text-background/60 hover:text-primary transition-colors">
                 <FiLinkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Granton Mburu. All rights reserved.</p>
+        <div className="border-t border-background/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-background/60 text-sm">© {new Date().getFullYear()} Granton Mburu. All rights reserved.</p>
           <div className="mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-            <span className="text-gray-600 mx-3">|</span>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+            <a href="#" className="text-background/60 hover:text-primary text-sm transition-colors">Privacy Policy</a>
+            <span className="text-background/30 mx-3">|</span>
+            <a href="#" className="text-background/60 hover:text-primary text-sm transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

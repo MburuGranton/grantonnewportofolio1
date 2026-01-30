@@ -58,15 +58,19 @@ export async function getArticles(): Promise<ContentfulArticle[]> {
   }
   
   try {
+    console.log('Fetching articles from Contentful...');
     // We've already checked that contentfulClient is not null
     const entries = await contentfulClient!.getEntries({
       content_type: 'blogPost',
       order: ['-fields.publishDate'], // Sort by newest first
     });
 
+    console.log('Contentful response:', entries.items.length, 'articles found');
+
     // Transform the Contentful response into our ContentfulArticle format
     return entries.items.map(item => {
       const fields = item.fields as any;
+      console.log('Processing article:', fields.title);
       
       // Safely extract image URL
       let imageUrl = '';
