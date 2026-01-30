@@ -17,7 +17,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              Available for opportunities
+              Open to new collaborations
             </motion.p>
             
             <motion.h1 
@@ -98,14 +98,14 @@ const HeroSection = () => {
           >
             <div className="relative">
               {/* Simple accent shape - not animated */}
-              <div className="absolute -top-4 -right-4 w-full h-full bg-primary/10 rounded-2xl"></div>
+              <div className="absolute -top-3 -right-3 w-full h-full bg-primary/10 rounded-2xl max-w-sm mx-auto"></div>
               
               {/* Main image */}
-              <div className="relative bg-card rounded-2xl overflow-hidden shadow-elevated">
+              <div className="relative bg-card rounded-2xl overflow-hidden shadow-elevated max-w-sm mx-auto">
                 <img 
                   src="https://drive.google.com/thumbnail?id=1tX32B-yJZcpjuKcksD7pkLjbPb2OiPV8" 
                   alt="Granton Mburu" 
-                  className="w-full aspect-[4/5] object-cover"
+                  className="w-full aspect-square object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.onerror = null;
