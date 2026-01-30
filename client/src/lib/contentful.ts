@@ -116,12 +116,15 @@ export async function getArticleBySlug(slug: string): Promise<ContentfulArticle 
   }
   
   try {
+    console.log('Fetching article with slug:', slug);
     // We've already checked that contentfulClient is not null
     const entries = await contentfulClient!.getEntries({
       content_type: 'blogPost',
-      'fields.slug': slug,
+      'fields.slug[match]': slug,
       limit: 1,
     });
+
+    console.log('Contentful response for slug query:', entries.items.length, 'items found');
 
     if (entries.items.length === 0) {
       return null;
