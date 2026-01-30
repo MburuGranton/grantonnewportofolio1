@@ -47,10 +47,10 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
   if (isLoading) {
     return (
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden min-h-screen">
-        <Navbar />
+        <Navbar minimal />
         <main className="pt-32 pb-20 overflow-x-hidden">
           <div className="container mx-auto px-6 max-w-4xl">
-            <Link href="/#blog">
+            <Link href="/blog">
               <div className="inline-flex items-center text-primary hover:underline mb-8 cursor-pointer">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Blog
@@ -89,7 +89,7 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
   if (error) {
     return (
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden min-h-screen">
-        <Navbar />
+        <Navbar minimal />
         <main className="pt-32 pb-20 overflow-x-hidden">
           <div className="container mx-auto px-6 max-w-4xl">
             <div className="text-center p-12 bg-red-50 dark:bg-red-900/20 rounded-lg">
@@ -110,12 +110,12 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
   
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden min-h-screen">
-      <Navbar />
+      <Navbar minimal />
       
       <main className="pt-32 pb-20 overflow-x-hidden">
         <div className="container mx-auto px-6 max-w-4xl">
           {/* Back Button */}
-          <Link href="/#blog">
+          <Link href="/blog">
             <div className="inline-flex items-center text-primary hover:underline mb-8 cursor-pointer">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Blog

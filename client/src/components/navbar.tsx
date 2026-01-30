@@ -4,7 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import ThemeToggle from "@/components/theme-toggle";
 
-const Navbar = () => {
+interface NavbarProps {
+  minimal?: boolean;
+}
+
+const Navbar = ({ minimal = false }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -61,47 +65,61 @@ const Navbar = () => {
     `}>
       <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold flex items-center">
-            <span className="text-primary mr-1">&lt;</span>
-            <span>Granton Mburu</span>
-            <span className="text-primary ml-1">/&gt;</span>
-          </Link>
+          {minimal ? (
+            <div className="text-xl font-bold flex items-center">
+              <span className="text-primary mr-1">&lt;</span>
+              <span>Granton Mburu</span>
+              <span className="text-primary ml-1">/&gt;</span>
+            </div>
+          ) : (
+            <Link href="/" className="text-xl font-bold flex items-center">
+              <span className="text-primary mr-1">&lt;</span>
+              <span>Granton Mburu</span>
+              <span className="text-primary ml-1">/&gt;</span>
+            </Link>
+          )}
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
-            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
-            <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-            <a href="#blog" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
-            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-            <Button className="bg-primary hover:bg-primary/90 text-white px-5 rounded-lg">Resume</Button>
+            {!minimal && (
+              <>
+                <a href="/#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
+                <a href="/#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
+                <a href="/#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
+                <a href="/#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+                <a href="/#blog" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+                <a href="/#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+                <Button className="bg-primary hover:bg-primary/90 text-white px-5 rounded-lg">Resume</Button>
+              </>
+            )}
             <ThemeToggle />
           </div>
           
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden space-x-2">
             <ThemeToggle />
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleMenu}
-            >
-              <Menu className="h-6 w-6" />
-            </Button>
+            {!minimal && (
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={toggleMenu}
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+            )}
           </div>
         </nav>
         
         {/* Mobile Navigation */}
-        {isOpen && (
+        {isOpen && !minimal && (
           <div className="md:hidden py-4 bg-card border border-border rounded-xl mt-4 px-4 shadow-sm">
             <div className="flex flex-col space-y-4">
-              <a href="#home" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Home</a>
-              <a href="#about" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">About</a>
-              <a href="#skills" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Skills</a>
-              <a href="#projects" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Projects</a>
-              <a href="#blog" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Blog</a>
-              <a href="#contact" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Contact</a>
+              <a href="/#home" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Home</a>
+              <a href="/#about" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">About</a>
+              <a href="/#skills" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Skills</a>
+              <a href="/#projects" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Projects</a>
+              <a href="/#blog" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Blog</a>
+              <a href="/#contact" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Contact</a>
               <Button className="bg-primary hover:bg-primary/90 text-white w-full rounded-lg">Resume</Button>
             </div>
           </div>

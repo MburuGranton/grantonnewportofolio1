@@ -43,7 +43,7 @@ const Blog = () => {
   
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden min-h-screen">
-      <Navbar />
+      <Navbar minimal />
       
       <main className="pt-32 pb-20 overflow-x-hidden">
         <div className="container mx-auto px-6">
