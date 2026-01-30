@@ -16,6 +16,11 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
   // Fetch article from Contentful
   const { data: article, isLoading, error } = useArticle(slug);
   
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+  
   useEffect(() => {
     // If article doesn't exist and we're not loading, redirect to 404
     if (!article && !isLoading && !error) {

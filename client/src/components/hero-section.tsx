@@ -96,12 +96,12 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative">
+            <div className="relative max-w-sm mx-auto">
               {/* Simple accent shape - not animated */}
-              <div className="absolute -top-3 -right-3 w-full h-full bg-primary/10 rounded-2xl max-w-sm mx-auto"></div>
+              <div className="absolute -top-3 -right-3 w-full h-full bg-primary/10 rounded-2xl"></div>
               
               {/* Main image */}
-              <div className="relative bg-card rounded-2xl overflow-hidden shadow-elevated max-w-sm mx-auto">
+              <div className="relative bg-card rounded-2xl overflow-hidden shadow-elevated">
                 <img 
                   src="https://drive.google.com/thumbnail?id=1rlGB4t-HO1ca8YBa2lUEon9-w03nleuU&sz=w1000" 
                   alt="Granton Mburu" 
