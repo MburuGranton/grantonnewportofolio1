@@ -3,11 +3,15 @@ import ArticleCard from "@/components/article-card";
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { useArticles } from "@/hooks/use-contentful";
+import { useAllBlogViews } from "@/hooks/use-blog-views";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const BlogSection = () => {
   // Fetch articles from Contentful (falls back to static data if not configured)
   const { data: articles = [], isLoading } = useArticles();
+  
+  // Fetch all blog views
+  const { data: allViews = {} } = useAllBlogViews();
   
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const categories = articles.length > 0 
@@ -83,6 +87,7 @@ const BlogSection = () => {
                   readTime={article.readTime}
                   category={article.category}
                   slug={article.slug}
+                  views={allViews[article.slug] || 0}
                 />
               </div>
             ))

@@ -5,11 +5,15 @@ import Footer from "@/components/footer";
 import ArticleCard from "@/components/article-card";
 import { checkInView } from "@/lib/animation";
 import { useArticles } from "@/hooks/use-contentful";
+import { useAllBlogViews } from "@/hooks/use-blog-views";
 import { Skeleton } from "@/components/ui/skeleton"; 
 
 const Blog = () => {
   // Fetch articles from Contentful
   const { data: articles = [], isLoading, error } = useArticles();
+  
+  // Fetch all blog views
+  const { data: allViews = {} } = useAllBlogViews();
   
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const categories = articles.length > 0 
@@ -124,6 +128,7 @@ const Blog = () => {
                       readTime={article.readTime}
                       category={article.category}
                       slug={article.slug}
+                      views={allViews[article.slug] || 0}
                     />
                   </div>
                 ))

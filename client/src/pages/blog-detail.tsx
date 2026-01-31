@@ -1,25 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation, Link } from "wouter";
-import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Share2, Eye } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { checkInView } from "@/lib/animation";
 import { useArticle } from "@/hooks/use-contentful";
+import { useBlogViews, useIncrementViews, formatViews } from "@/hooks/use-blog-views";
 import ContentfulRichText from "@/components/contentful-rich-text";
 
 const BlogDetail = ({ params }: { params: { slug: string } }) => {
   const [, navigate] = useLocation();
   const { slug } = params;
+  const hasIncrementedViews = useRef(false);
   
   // Fetch article from Contentful
   const { data: article, isLoading, error } = useArticle(slug);
+  
+  // Fetch and manage views
+  const { data: viewsData } = useBlogViews(slug);
+  const incrementViews = useIncrementViews();
   
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
+  
+  // Increment view count when article loads (only once per visit)
+  useEffect(() => {
+    if (article && !hasIncrementedViews.current) {
+      hasIncrementedViews.current = true;
+      incrementViews.mutate(slug);
+    }
+  }, [article, slug, incrementViews]);
   
   useEffect(() => {
     // If article doesn't exist and we're not loading, redirect to 404
@@ -132,7 +146,9 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
               <Calendar className="h-4 w-4 mr-1" />
               <span className="mr-4">{article.date}</span>
               <Clock className="h-4 w-4 mr-1" />
-              <span>{article.readTime}</span>
+              <span className="mr-4">{article.readTime}</span>
+              <Eye className="h-4 w-4 mr-1" />
+              <span>{formatViews(viewsData?.views || 0)} views</span>
             </div>
           </div>
           

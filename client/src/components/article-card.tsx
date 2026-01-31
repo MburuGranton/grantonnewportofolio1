@@ -1,5 +1,6 @@
-import { Calendar, Clock, ArrowUpRight } from "lucide-react";
+import { Calendar, Clock, ArrowUpRight, Eye } from "lucide-react";
 import { Link } from "wouter";
+import { formatViews } from "@/hooks/use-blog-views";
 
 interface ArticleCardProps {
   title: string;
@@ -9,6 +10,7 @@ interface ArticleCardProps {
   readTime: string;
   category: string;
   slug: string;
+  views?: number;
 }
 
 const ArticleCard = ({
@@ -18,7 +20,8 @@ const ArticleCard = ({
   date,
   readTime,
   category,
-  slug
+  slug,
+  views = 0
 }: ArticleCardProps) => {
   return (
     <div className="bg-card border border-border rounded-xl overflow-hidden group h-full flex flex-col transition-colors hover:border-primary/30 animate-on-scroll">
@@ -42,6 +45,9 @@ const ArticleCard = ({
           <div className="mx-2">•</div>
           <Clock className="h-3.5 w-3.5 mr-1" />
           <span>{readTime}</span>
+          <div className="mx-2">•</div>
+          <Eye className="h-3.5 w-3.5 mr-1" />
+          <span>{formatViews(views)} views</span>
         </div>
         
         <h3 className="text-lg font-semibold mb-2 line-clamp-2 group-hover:text-primary transition-colors">

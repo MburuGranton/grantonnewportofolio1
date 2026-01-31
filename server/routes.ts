@@ -41,6 +41,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Blog views endpoints
+  
+  // Get all blog views
+  app.get("/api/views", async (req, res) => {
+    try {
+      const views = await storage.getAllViews();
+      return res.status(200).json(views);
+    } catch (error) {
+      console.error("Error fetching views:", error);
+      return res.status(500).json({ message: "Server error fetching views" });
+    }
+  });
+
+  // Get views for a specific blog post
+  app.get("/api/views/:slug", async (req, res) => {
+    try {
+      const { slug } = req.params;
+      const views = await storage.getViewsBySlug(slug);
+      return res.status(200).json({ slug, views });
+    } catch (error) {
+      console.error("Error fetching views:", error);
+      return res.status(500).json({ message: "Server error fetching views" });
+    }
+  });
+
+  // Increment views for a blog post
+  app.post("/api/views/:slug", async (req, res) => {
+    try {
+      const { slug } = req.params;
+      const views = await storage.incrementViews(slug);
+      return res.status(200).json({ slug, views });
+    } catch (error) {
+      console.error("Error incrementing views:", error);
+      return res.status(500).json({ message: "Server error incrementing views" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

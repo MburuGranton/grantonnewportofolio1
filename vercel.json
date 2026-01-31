@@ -2,6 +2,8 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
   "routes": [
+    { "src": "/api/views", "dest": "/api/views/index.ts" },
+    { "src": "/api/views/(.+)", "dest": "/api/views/[slug].ts?slug=$1" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
