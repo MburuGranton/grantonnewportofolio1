@@ -49,14 +49,14 @@ const Blog = () => {
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden min-h-screen">
       <Navbar minimal />
       
-      <main className="pt-32 pb-20 overflow-x-hidden">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 animate-on-scroll">
-            <div className="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900 text-accent dark:text-purple-400 mb-6">
+      <main className="pt-24 md:pt-32 pb-16 md:pb-20 overflow-x-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 md:mb-16 animate-on-scroll">
+            <div className="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900 text-accent dark:text-purple-400 mb-4 md:mb-6">
               <span className="text-sm font-medium">Articles</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">Blog</h1>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4 leading-tight">Blog</h1>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2">
               Insights, tutorials, and industry analyses to help you stay informed about the latest trends and best practices.
             </p>
           </div>

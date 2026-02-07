@@ -126,8 +126,8 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden min-h-screen">
       <Navbar minimal />
       
-      <main className="pt-32 pb-20 overflow-x-hidden">
-        <div className="container mx-auto px-6 max-w-4xl">
+      <main className="pt-24 md:pt-32 pb-16 md:pb-20 overflow-x-hidden">
+        <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
           {/* Back Button */}
           <Link href="/blog">
             <div className="inline-flex items-center text-primary hover:underline mb-8 cursor-pointer">
@@ -141,12 +141,12 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
             <div className="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900 text-accent dark:text-purple-400 mb-6">
               <span className="text-sm font-medium">{article.category}</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">{article.title}</h1>
-            <div className="flex items-center text-gray-500 dark:text-gray-400 mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight">{article.title}</h1>
+            <div className="flex flex-wrap items-center text-gray-500 dark:text-gray-400 mb-6 md:mb-8 text-sm sm:text-base gap-y-1">
               <Calendar className="h-4 w-4 mr-1" />
-              <span className="mr-4">{article.date}</span>
+              <span className="mr-3 sm:mr-4">{article.date}</span>
               <Clock className="h-4 w-4 mr-1" />
-              <span className="mr-4">{article.readTime}</span>
+              <span className="mr-3 sm:mr-4">{article.readTime}</span>
               <Eye className="h-4 w-4 mr-1" />
               <span>{formatViews(viewsData?.views || 0)} views</span>
             </div>
@@ -162,8 +162,8 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
           </div>
           
           {/* Article Content */}
-          <div className="prose prose-lg dark:prose-invert max-w-none animate-on-scroll">
-            <p className="lead mb-6 text-xl">
+          <div className="prose prose-base sm:prose-lg dark:prose-invert max-w-none animate-on-scroll prose-headings:leading-tight prose-p:leading-relaxed">
+            <p className="lead mb-4 md:mb-6 text-base sm:text-lg md:text-xl leading-relaxed">
               {article.excerpt}
             </p>
             
@@ -207,8 +207,8 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
               </>
             )}
             
-            <div className="not-prose border-t border-gray-200 dark:border-gray-800 mt-12 pt-8">
-              <div className="flex items-center justify-between">
+            <div className="not-prose border-t border-gray-200 dark:border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                     <span className="text-lg font-bold">GM</span>

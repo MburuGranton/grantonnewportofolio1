@@ -23,37 +23,37 @@ const ContentfulRichText = ({ content }: ContentfulRichTextProps) => {
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => (
-        <p className="mb-6">{children}</p>
+        <p className="mb-4 md:mb-6 text-base sm:text-lg leading-relaxed">{children}</p>
       ),
       [BLOCKS.HEADING_1]: (node: any, children: React.ReactNode) => (
-        <h1 className="text-4xl font-bold mb-6 mt-12">{children}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6 mt-8 md:mt-12 leading-tight">{children}</h1>
       ),
       [BLOCKS.HEADING_2]: (node: any, children: React.ReactNode) => (
-        <h2 className="text-3xl font-bold mb-4 mt-10">{children}</h2>
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-8 md:mt-10 leading-tight">{children}</h2>
       ),
       [BLOCKS.HEADING_3]: (node: any, children: React.ReactNode) => (
-        <h3 className="text-2xl font-bold mb-4 mt-8">{children}</h3>
+        <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 md:mb-4 mt-6 md:mt-8 leading-tight">{children}</h3>
       ),
       [BLOCKS.HEADING_4]: (node: any, children: React.ReactNode) => (
-        <h4 className="text-xl font-bold mb-4 mt-6">{children}</h4>
+        <h4 className="text-base sm:text-lg md:text-xl font-bold mb-3 md:mb-4 mt-5 md:mt-6 leading-tight">{children}</h4>
       ),
       [BLOCKS.HEADING_5]: (node: any, children: React.ReactNode) => (
-        <h5 className="text-lg font-bold mb-4 mt-6">{children}</h5>
+        <h5 className="text-base sm:text-lg font-bold mb-3 md:mb-4 mt-5 md:mt-6 leading-tight">{children}</h5>
       ),
       [BLOCKS.HEADING_6]: (node: any, children: React.ReactNode) => (
-        <h6 className="text-base font-bold mb-4 mt-6">{children}</h6>
+        <h6 className="text-sm sm:text-base font-bold mb-3 md:mb-4 mt-5 md:mt-6 leading-tight">{children}</h6>
       ),
       [BLOCKS.UL_LIST]: (node: any, children: React.ReactNode) => (
-        <ul className="list-disc ml-6 mb-6">{children}</ul>
+        <ul className="list-disc ml-4 sm:ml-6 mb-4 md:mb-6 text-base sm:text-lg">{children}</ul>
       ),
       [BLOCKS.OL_LIST]: (node: any, children: React.ReactNode) => (
-        <ol className="list-decimal ml-6 mb-6">{children}</ol>
+        <ol className="list-decimal ml-4 sm:ml-6 mb-4 md:mb-6 text-base sm:text-lg">{children}</ol>
       ),
       [BLOCKS.LIST_ITEM]: (node: any, children: React.ReactNode) => (
-        <li className="mb-2">{children}</li>
+        <li className="mb-2 leading-relaxed">{children}</li>
       ),
       [BLOCKS.QUOTE]: (node: any, children: React.ReactNode) => (
-        <blockquote className="border-l-4 border-primary pl-4 italic my-6">{children}</blockquote>
+        <blockquote className="border-l-4 border-primary pl-3 sm:pl-4 italic my-4 md:my-6 text-base sm:text-lg">{children}</blockquote>
       ),
       [BLOCKS.HR]: () => <hr className="my-8 border-t border-gray-200 dark:border-gray-800" />,
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => {

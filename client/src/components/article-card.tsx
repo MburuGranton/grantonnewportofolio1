@@ -38,19 +38,25 @@ const ArticleCard = ({
         </div>
       </div>
       
-      <div className="p-5 flex flex-col flex-grow">
-        <div className="flex items-center text-xs text-muted-foreground mb-3">
-          <Calendar className="h-3.5 w-3.5 mr-1" />
-          <span>{date}</span>
-          <div className="mx-2">•</div>
-          <Clock className="h-3.5 w-3.5 mr-1" />
-          <span>{readTime}</span>
-          <div className="mx-2">•</div>
-          <Eye className="h-3.5 w-3.5 mr-1" />
-          <span>{formatViews(views)} views</span>
+      <div className="p-4 sm:p-5 flex flex-col flex-grow">
+        <div className="flex flex-wrap items-center text-xs text-muted-foreground mb-3 gap-y-1">
+          <div className="flex items-center">
+            <Calendar className="h-3.5 w-3.5 mr-1" />
+            <span>{date}</span>
+          </div>
+          <div className="mx-2 hidden sm:block">•</div>
+          <div className="flex items-center">
+            <Clock className="h-3.5 w-3.5 mr-1 ml-2 sm:ml-0" />
+            <span>{readTime}</span>
+          </div>
+          <div className="mx-2 hidden sm:block">•</div>
+          <div className="flex items-center">
+            <Eye className="h-3.5 w-3.5 mr-1 ml-2 sm:ml-0" />
+            <span>{formatViews(views)}</span>
+          </div>
         </div>
         
-        <h3 className="text-lg font-semibold mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+        <h3 className="text-base sm:text-lg font-semibold mb-2 line-clamp-2 group-hover:text-primary transition-colors leading-snug">
           {title}
         </h3>
         
