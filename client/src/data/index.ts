@@ -176,9 +176,9 @@ export const projects = [
     category: "Web Development"
   },
   {
-    title: "Analytics Dashboard",
+    title: "AYSE Analytics Dashboard",
     subtitle: "React, TypeScript, TailwindCSS",
-    description: "A comprehensive SaaS analytics dashboard with KPI metric cards, interactive SVG line/bar/pie charts, sortable data tables with pagination, dark/light mode, and a collapsible sidebar. All charts built with pure SVG — no external libraries.",
+    description: "An analytics dashboard built for the Association of Young Software Engineers (AYSE). Tracks membership growth, chapter distribution, program enrollment and completion rates, daily active members, and acquisition channels — all with pure SVG charts, sortable tables, and dark/light mode.",
     technologies: [
       { name: "React", color: "text-accent", bgColor: "bg-purple-100" },
       { name: "TypeScript", color: "text-accent", bgColor: "bg-purple-100" },
