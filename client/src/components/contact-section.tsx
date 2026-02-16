@@ -29,22 +29,17 @@ const ContactSection = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      const emails = ["mburugranton@gmail.com", "mburugrantonnyange@gmail.com"];
-      await Promise.all(
-        emails.map((email) =>
-          emailjs.send(
-            import.meta.env.VITE_EMAILJS_SERVICE_ID,
-            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-            {
-              from_name: data.name,
-              from_email: data.email,
-              reply_to: data.email,
-              subject: data.subject,
-              message: data.message,
-              to_email: email,
-            }
-          )
-        )
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          reply_to: data.email,
+          subject: data.subject,
+          message: data.message,
+          to_email: "mburugranton@gmail.com",
+        }
       );
       toast({
         title: "Message sent!",
