@@ -1,126 +1,117 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/theme-toggle";
 
 interface NavbarProps {
   minimal?: boolean;
 }
 
+const navLinks = [
+  { label: "About", href: "/#about", num: "01" },
+  { label: "Skills", href: "/#skills", num: "02" },
+  { label: "Work", href: "/#projects", num: "03" },
+  { label: "Blog", href: "/#blog", num: "04" },
+  { label: "Contact", href: "/#contact", num: "05" },
+];
+
 const Navbar = ({ minimal = false }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  
-  useEffect(() => {
-    // Check dark mode on mount and when it changes
-    const checkDarkMode = () => {
-      const isDark = document.documentElement.classList.contains("dark");
-      setTheme(isDark ? "dark" : "light");
-    };
-    
-    // Initialize
-    checkDarkMode();
-    
-    // Listen for changes to the HTML class
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "class") {
-          checkDarkMode();
-        }
-      });
-    });
-    
-    observer.observe(document.documentElement, { attributes: true });
-    
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-200 
+    <header className={`fixed w-full z-50 transition-all duration-300 
       ${isScrolled 
-        ? 'bg-background/95 backdrop-blur-sm border-b border-border shadow-sm' 
-        : 'bg-transparent border-b border-transparent'
+        ? 'bg-background/90 backdrop-blur-md border-b border-border/50' 
+        : 'bg-transparent'
       }
     `}>
       <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
+          {/* Logo — distinctive monogram, not <Name/> */}
           {minimal ? (
-            <div className="text-xl font-bold flex items-center">
-              <span className="text-primary mr-1">&lt;</span>
-              <span>Granton Mburu</span>
-              <span className="text-primary ml-1">/&gt;</span>
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
+                <span className="text-white font-bold text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>GM</span>
+              </div>
+              <span className="font-semibold text-sm tracking-tight">Granton Mburu</span>
             </div>
           ) : (
-            <Link href="/" className="text-xl font-bold flex items-center">
-              <span className="text-primary mr-1">&lt;</span>
-              <span>Granton Mburu</span>
-              <span className="text-primary ml-1">/&gt;</span>
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-white font-bold text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>GM</span>
+              </div>
+              <span className="font-semibold text-sm tracking-tight hidden sm:block">Granton Mburu</span>
             </Link>
           )}
           
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation — numbered links */}
+          <div className="hidden md:flex items-center gap-1">
             {!minimal && (
               <>
-                <a href="/#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
-                <a href="/#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-                <a href="/#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
-                <a href="/#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-                <a href="/#blog" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
-                <a href="/#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-                <Button className="bg-primary hover:bg-primary/90 text-white px-5 rounded-lg">Resume</Button>
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                  >
+                    <span className="text-primary/60 text-[10px] font-mono mr-1">{link.num}.</span>
+                    {link.label}
+                    <span className="absolute bottom-0 left-3 right-3 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                  </a>
+                ))}
+                <div className="ml-3 h-5 w-px bg-border" />
+                <Button className="ml-3 bg-primary hover:bg-primary/90 text-white text-xs px-4 py-2 rounded-full h-8 font-medium">
+                  Resume
+                </Button>
               </>
             )}
-            <ThemeToggle />
+            <div className="ml-2">
+              <ThemeToggle />
+            </div>
           </div>
           
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden space-x-2">
+          {/* Mobile */}
+          <div className="flex items-center md:hidden gap-2">
             <ThemeToggle />
             {!minimal && (
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                onClick={toggleMenu}
+              <button 
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
               >
-                <Menu className="h-6 w-6" />
-              </Button>
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
             )}
           </div>
         </nav>
         
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation — clean slide-down */}
         {isOpen && !minimal && (
-          <div className="md:hidden py-4 bg-card border border-border rounded-xl mt-4 px-4 shadow-sm">
-            <div className="flex flex-col space-y-4">
-              <a href="/#home" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Home</a>
-              <a href="/#about" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">About</a>
-              <a href="/#skills" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Skills</a>
-              <a href="/#projects" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Projects</a>
-              <a href="/#blog" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Blog</a>
-              <a href="/#contact" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2">Contact</a>
-              <Button className="bg-primary hover:bg-primary/90 text-white w-full rounded-lg">Resume</Button>
+          <div className="md:hidden py-6 mt-2 border-t border-border/50">
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+                >
+                  <span className="text-primary/60 text-xs font-mono w-6">{link.num}.</span>
+                  <span className="text-sm font-medium">{link.label}</span>
+                </a>
+              ))}
+              <div className="mt-3 pt-3 border-t border-border/50">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-full h-10 text-sm font-medium">
+                  Resume
+                </Button>
+              </div>
             </div>
           </div>
         )}

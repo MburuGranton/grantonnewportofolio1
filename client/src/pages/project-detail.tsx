@@ -1,100 +1,108 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation, Link } from "wouter";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
 import { projects } from "@/data";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { checkInView } from "@/lib/animation";
+import { motion } from "framer-motion";
 
 const ProjectDetail = ({ params }: { params: { slug: string } }) => {
   const [, navigate] = useLocation();
   const { slug } = params;
   
-  // Find the project by slug
   const project = projects.find(p => 
     p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug
   );
   
   useEffect(() => {
-    // If project doesn't exist, redirect to 404
+    window.scrollTo(0, 0);
     if (!project) {
       navigate("/not-found");
-      return;
     }
-    
-    // Set up animation on scroll
-    const checkAnimations = () => {
-      checkInView();
-    };
-    
-    // Initial check
-    checkAnimations();
-    // Check on scroll
-    window.addEventListener("scroll", checkAnimations);
-    
-    return () => {
-      window.removeEventListener("scroll", checkAnimations);
-    };
   }, [project, navigate]);
   
   if (!project) return null;
   
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden min-h-screen">
+    <div className="bg-background text-foreground overflow-x-hidden min-h-screen">
       <Navbar />
       
-      <main className="pt-32 pb-20 overflow-x-hidden">
-        <div className="container mx-auto px-6">
-          {/* Back Button */}
+      <main className="pt-28 md:pt-36 pb-16 md:pb-24 overflow-x-hidden">
+        <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+          {/* Back */}
           <Link href="/#projects">
-            <div className="inline-flex items-center text-primary hover:underline mb-8 cursor-pointer">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Projects
-            </div>
+            <motion.span
+              className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors mb-10 cursor-pointer gap-2"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Back
+            </motion.span>
           </Link>
           
-          {/* Project Header */}
-          <div className="mb-12 animate-on-scroll">
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">{project.title}</h1>
-            <div className="flex flex-wrap gap-2 mb-6">
+          {/* Header */}
+          <motion.div
+            className="mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-[1.1]">
+              {project.title}
+            </h1>
+            <div className="flex flex-wrap gap-1.5 mb-5">
               {project.technologies.map((tech, index) => (
                 <span 
                   key={index} 
-                  className={`${tech.bgColor} dark:bg-opacity-20 ${tech.color} px-3 py-1 rounded-full text-sm font-medium`}
+                  className="bg-primary/10 text-primary px-2.5 py-1 rounded-full text-xs font-medium"
                 >
                   {tech.name}
                 </span>
               ))}
             </div>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">{project.subtitle}</p>
-          </div>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl leading-relaxed">
+              {project.subtitle}
+            </p>
+          </motion.div>
           
-          {/* Project Image */}
-          <div className="rounded-xl overflow-hidden shadow-lg mb-16 animate-on-scroll">
+          {/* Image */}
+          <motion.div
+            className="rounded-2xl overflow-hidden mb-14"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
             <img 
               src={project.imageUrl} 
               alt={project.title} 
               className="w-full h-auto object-cover" 
             />
-          </div>
+          </motion.div>
           
-          {/* Project Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 animate-on-scroll">
-            <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold mb-6">Project Overview</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+          {/* Content */}
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-3 gap-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            <div className="lg:col-span-2 space-y-6">
+              <h2 className="text-xl font-bold tracking-tight">Project Overview</h2>
+              <p className="text-muted-foreground leading-relaxed">
                 {project.description}
               </p>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-muted-foreground leading-relaxed">
                 This is an expanded description of the project, detailing the challenges faced and solutions implemented. The client needed a robust platform that could handle their complex business requirements while maintaining excellent user experience.
               </p>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
+              <p className="text-muted-foreground leading-relaxed">
                 The solution leverages modern web technologies to provide a scalable, performant application that exceeds the client's expectations and sets them up for future growth.
               </p>
               
-              <h2 className="text-2xl font-bold mb-6">Key Features</h2>
-              <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300 mb-8 space-y-2">
+              <h2 className="text-xl font-bold tracking-tight pt-2">Key Features</h2>
+              <ul className="list-disc pl-5 text-muted-foreground space-y-2">
                 <li>Responsive design that works seamlessly across all devices</li>
                 <li>Intuitive user interface with thoughtful animations and transitions</li>
                 <li>Robust data handling with efficient state management</li>
@@ -104,22 +112,22 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
             </div>
             
             <div className="lg:col-span-1">
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl mb-8">
-                <h3 className="text-xl font-bold mb-4">Project Details</h3>
-                <div className="space-y-4">
+              <div className="bg-card border border-border rounded-2xl p-6 mb-6">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Details</h3>
+                <div className="space-y-5">
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Category</p>
-                    <p className="font-medium">{project.category}</p>
+                    <p className="text-xs text-muted-foreground mb-1">Category</p>
+                    <p className="text-sm font-medium">{project.category}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Timeline</p>
-                    <p className="font-medium">4 weeks</p>
+                    <p className="text-xs text-muted-foreground mb-1">Timeline</p>
+                    <p className="text-sm font-medium">4 weeks</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Technologies</p>
+                    <p className="text-xs text-muted-foreground mb-1">Technologies</p>
                     <div className="flex flex-wrap gap-1 mt-1">
                       {project.technologies.map((tech, index) => (
-                        <span key={index} className="text-primary dark:text-blue-400 font-medium">
+                        <span key={index} className="text-xs text-primary font-medium">
                           {tech.name}{index < project.technologies.length - 1 ? ', ' : ''}
                         </span>
                       ))}
@@ -128,30 +136,30 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
                 </div>
               </div>
               
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col gap-3">
                 <Button 
-                  className="w-full bg-primary hover:bg-primary-700 text-white flex items-center justify-center" 
+                  className="w-full rounded-full" 
                   asChild
                 >
                   <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="h-4 w-4 mr-2" />
+                    <ExternalLink className="h-3.5 w-3.5 mr-2" />
                     Visit Live Project
                   </a>
                 </Button>
                 
                 <Button 
                   variant="outline" 
-                  className="w-full flex items-center justify-center" 
+                  className="w-full rounded-full" 
                   asChild
                 >
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="h-4 w-4 mr-2" />
+                    <Github className="h-3.5 w-3.5 mr-2" />
                     View Source Code
                   </a>
                 </Button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </main>
       

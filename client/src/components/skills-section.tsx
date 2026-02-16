@@ -1,118 +1,100 @@
-import { Code, Monitor, Briefcase, LineChart, Users, Handshake, Speaker } from "lucide-react";
-import SkillCard from "@/components/skill-card";
+import { Code, Monitor, Briefcase, LineChart, Users, Handshake, Mic } from "lucide-react";
 import { skills } from "@/data";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+const technicalSkills = [
+  { title: "Front-end Development", description: "Building responsive web apps with modern frameworks.", icon: Code, skills: skills.frontend, accent: "bg-blue-500" },
+  { title: "UI/UX Design", description: "Creating intuitive, beautiful interfaces.", icon: Monitor, skills: skills.design, accent: "bg-emerald-500" },
+  { title: "Frameworks & Tools", description: "Leveraging modern dev tools for robust apps.", icon: Briefcase, skills: skills.frameworks, accent: "bg-violet-500" },
+];
+
+const businessSkills = [
+  { title: "Marketing", icon: LineChart, skills: skills.marketing, accent: "bg-rose-500" },
+  { title: "Business Development", icon: Users, skills: skills.business, accent: "bg-amber-500" },
+  { title: "Partnership Management", icon: Handshake, skills: skills.partnership, accent: "bg-cyan-500" },
+  { title: "KOL Management", icon: Mic, skills: skills.kol, accent: "bg-indigo-500" },
+];
 
 const SkillsSection = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  
-  // Monitor theme changes
-  useEffect(() => {
-    const updateTheme = () => {
-      const isDarkMode = document.documentElement.classList.contains("dark");
-      setTheme(isDarkMode ? "dark" : "light");
-    };
-    
-    // Set initial theme
-    updateTheme();
-    
-    // Watch for changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "class") {
-          updateTheme();
-        }
-      });
-    });
-    
-    observer.observe(document.documentElement, { attributes: true });
-    
-    return () => observer.disconnect();
-  }, []);
-  
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-28 bg-muted/30">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12 animate-on-scroll">
-          <span className="inline-block text-sm font-medium text-primary mb-3">My Skills</span>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">My Expertise</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            I've spent years refining my skills across multiple domains. Here's a breakdown of my technical and non-technical expertise and what I can bring to your project.
-          </p>
-        </div>
+        {/* Section header */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="section-label">02 — Expertise</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-4 tracking-tight">
+            What I bring to the table
+          </h2>
+        </motion.div>
         
-        <div className="mb-12">
-          <h3 className="text-xl font-semibold mb-6 text-center">Technical Skills</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <SkillCard 
-              title="Front-end Development" 
-              description="Building responsive websites and web applications using modern HTML, CSS, and JavaScript frameworks."
-              icon={<Code className="h-8 w-8" />}
-              iconBgColor="bg-blue-100 dark:bg-blue-900"
-              iconColor="text-primary"
-              skills={skills.frontend}
-            />
-            
-            <SkillCard 
-              title="UI/UX Design" 
-              description="Creating intuitive user interfaces and experiences that are both beautiful and functional."
-              icon={<Monitor className="h-8 w-8" />}
-              iconBgColor="bg-green-100 dark:bg-green-900"
-              iconColor="text-secondary"
-              skills={skills.design}
-            />
-            
-            <SkillCard 
-              title="Frameworks & Tools" 
-              description="Leveraging modern frameworks and development tools to build robust applications."
-              icon={<Briefcase className="h-8 w-8" />}
-              iconBgColor="bg-purple-100 dark:bg-purple-900"
-              iconColor="text-accent"
-              skills={skills.frameworks}
-            />
-          </div>
+        {/* Technical skills — horizontal cards with accent bar */}
+        <div className="grid md:grid-cols-3 gap-4 mb-16">
+          {technicalSkills.map((skill, index) => {
+            const Icon = skill.icon;
+            return (
+              <motion.div
+                key={skill.title}
+                className="group relative bg-card border border-border rounded-xl p-6 hover:border-border/80 transition-all duration-300 overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                {/* Accent bar top */}
+                <div className={`absolute top-0 left-0 right-0 h-1 ${skill.accent} opacity-60 group-hover:opacity-100 transition-opacity`} />
+                
+                <Icon className="w-5 h-5 text-muted-foreground mb-4" />
+                <h3 className="font-semibold mb-2">{skill.title}</h3>
+                <p className="text-sm text-muted-foreground mb-5 leading-relaxed">{skill.description}</p>
+                
+                <div className="flex flex-wrap gap-1.5">
+                  {skill.skills.map((s, i) => (
+                    <span key={i} className="text-xs px-2.5 py-1 rounded-full bg-muted text-muted-foreground font-medium">
+                      {s.name}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-        
-        <div>
-          <h3 className="text-xl font-semibold mb-6 text-center">Business & Management Skills</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <SkillCard 
-              title="Marketing" 
-              description="Developing and executing marketing strategies to drive brand awareness and customer acquisition."
-              icon={<LineChart className="h-8 w-8" />}
-              iconBgColor="bg-red-100 dark:bg-red-900"
-              iconColor="text-red-600 dark:text-red-400"
-              skills={skills.marketing}
-            />
-            
-            <SkillCard 
-              title="Business Development" 
-              description="Identifying growth opportunities and developing strategies to expand market presence."
-              icon={<Users className="h-8 w-8" />}
-              iconBgColor="bg-amber-100 dark:bg-amber-900"
-              iconColor="text-amber-600 dark:text-amber-400"
-              skills={skills.business}
-            />
-            
-            <SkillCard 
-              title="Partnership Management" 
-              description="Building and nurturing strategic relationships with key partners and stakeholders."
-              icon={<Handshake className="h-8 w-8" />}
-              iconBgColor="bg-cyan-100 dark:bg-cyan-900"
-              iconColor="text-cyan-600 dark:text-cyan-400"
-              skills={skills.partnership}
-            />
-            
-            <SkillCard 
-              title="KOL Management" 
-              description="Working with key opinion leaders to amplify brand messaging and reach target audiences."
-              icon={<Speaker className="h-8 w-8" />}
-              iconBgColor="bg-indigo-100 dark:bg-indigo-900"
-              iconColor="text-indigo-600 dark:text-indigo-400"
-              skills={skills.kol}
-            />
+
+        {/* Business skills — compact horizontal list style */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h3 className="text-sm font-medium text-muted-foreground mb-6 tracking-wide">Business & Strategy</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {businessSkills.map((skill) => {
+              const Icon = skill.icon;
+              return (
+                <div
+                  key={skill.title}
+                  className="flex items-start gap-3 p-4 rounded-lg border border-border/50 bg-card/50 hover:bg-card hover:border-border transition-all"
+                >
+                  <div className={`w-8 h-8 rounded-lg ${skill.accent}/10 flex items-center justify-center flex-shrink-0`}>
+                    <Icon className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium mb-1">{skill.title}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {skill.skills.map(s => s.name).join(" · ")}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

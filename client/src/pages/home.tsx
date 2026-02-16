@@ -11,23 +11,13 @@ import { checkInView } from "@/lib/animation";
 
 const Home = () => {
   useEffect(() => {
-    // Set up animation on scroll
-    const checkAnimations = () => {
-      checkInView();
-    };
-
-    // Initial check
-    checkAnimations();
-    // Check on scroll
-    window.addEventListener("scroll", checkAnimations);
-
-    return () => {
-      window.removeEventListener("scroll", checkAnimations);
-    };
+    checkInView();
+    window.addEventListener("scroll", checkInView);
+    return () => window.removeEventListener("scroll", checkInView);
   }, []);
 
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden">
+    <div className="bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <main className="overflow-x-hidden">
         <HeroSection />

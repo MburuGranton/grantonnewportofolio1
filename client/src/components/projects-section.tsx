@@ -1,67 +1,44 @@
-import { Button } from "@/components/ui/button";
 import ProjectCard from "@/components/project-card";
 import { projects } from "@/data";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const ProjectsSection = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  
-  // Monitor theme changes
-  useEffect(() => {
-    const updateTheme = () => {
-      const isDarkMode = document.documentElement.classList.contains("dark");
-      setTheme(isDarkMode ? "dark" : "light");
-    };
-    
-    // Set initial theme
-    updateTheme();
-    
-    // Watch for changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "class") {
-          updateTheme();
-        }
-      });
-    });
-    
-    observer.observe(document.documentElement, { attributes: true });
-    
-    return () => observer.disconnect();
-  }, []);
-  
   return (
-    <section id="projects" className="py-20 bg-muted/50">
+    <section id="projects" className="py-28">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12 animate-on-scroll">
-          <span className="inline-block text-sm font-medium text-primary mb-3">My Work</span>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Featured Projects</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Here's a selection of my recent work. Each project presented unique challenges that helped me grow as a developer.
+        {/* Section header */}
+        <motion.div
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div>
+            <span className="section-label">03 — Work</span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 tracking-tight">
+              Selected projects
+            </h2>
+          </div>
+          <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
+            Each project presented unique challenges that shaped my approach to building in the Web3 space.
           </p>
-        </div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Bento-style grid — first project featured large */}
+        <div className="bento-grid">
           {projects.map((project, index) => (
-            <div key={index} className="h-full">
-              <ProjectCard {...project} />
-            </div>
+            <motion.div
+              key={index}
+              className="h-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProjectCard {...project} featured={index === 0} />
+            </motion.div>
           ))}
-        </div>
-        
-        <div className="text-center mt-10 animate-on-scroll">
-          <Button 
-            asChild 
-            variant="outline" 
-            className="border-border hover:border-primary/50 text-muted-foreground hover:text-primary"
-          >
-            <a href="#">
-              View All Projects
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </a>
-          </Button>
         </div>
       </div>
     </section>

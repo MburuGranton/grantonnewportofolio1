@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { PhoneCall, Mail, MapPin } from "lucide-react";
-import { FiGithub, FiTwitter, FiLinkedin, FiDribbble } from "react-icons/fi";
+import { Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { FiGithub, FiTwitter, FiLinkedin } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 type FormValues = {
   name: string;
@@ -20,43 +21,15 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>();
-  const [theme, setTheme] = useState<"light" | "dark">("light");
   
-  // Initialize EmailJS
   useEffect(() => {
     emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-  }, []);
-  
-  // Monitor theme changes
-  useEffect(() => {
-    const updateTheme = () => {
-      const isDarkMode = document.documentElement.classList.contains("dark");
-      setTheme(isDarkMode ? "dark" : "light");
-    };
-    
-    // Set initial theme
-    updateTheme();
-    
-    // Watch for changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "class") {
-          updateTheme();
-        }
-      });
-    });
-    
-    observer.observe(document.documentElement, { attributes: true });
-    
-    return () => observer.disconnect();
   }, []);
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
       const emails = ["mburugranton@gmail.com", "mburugrantonnyange@gmail.com"];
-      
-      // Send to both email addresses
       await Promise.all(
         emails.map((email) =>
           emailjs.send(
@@ -72,7 +45,6 @@ const ContactSection = () => {
           )
         )
       );
-      
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
@@ -91,140 +63,124 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-28">
       <div className="container mx-auto px-6">
-        <div className="bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="animate-on-scroll">
-              <span className="inline-block text-sm font-medium text-primary mb-4">Contact Me</span>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-                Let's work together on your next project
-              </h2>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm currently available for freelance work. If you have a project that needs some creative direction, development work, or improvement, feel free to contact me.
-              </p>
-              
-              <div className="space-y-5 mb-8">
-                <div className="flex items-start">
-                  <div className="text-primary bg-primary/10 w-10 h-10 rounded-lg flex items-center justify-center mr-4">
-                    <PhoneCall className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium mb-0.5">Phone</h3>
-                    <p className="text-muted-foreground text-sm">+254 705 146 863</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="text-primary bg-primary/10 w-10 h-10 rounded-lg flex items-center justify-center mr-4">
-                    <Mail className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium mb-0.5">Email</h3>
-                    <p className="text-muted-foreground text-sm">mburugranton@gmail.com</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="text-primary bg-primary/10 w-10 h-10 rounded-lg flex items-center justify-center mr-4">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium mb-0.5">Location</h3>
-                    <p className="text-muted-foreground text-sm">Kenya</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex space-x-3">
-                <a href="https://github.com/MburuGranton" className="text-muted-foreground hover:text-primary transition-colors w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:border-primary/50">
-                  <FiGithub className="w-5 h-5" />
-                </a>
-                <a href="https://x.com/GrantonMburu" className="text-muted-foreground hover:text-primary transition-colors w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:border-primary/50">
-                  <FiTwitter className="w-5 h-5" />
-                </a>
-                <a href="https://www.linkedin.com/in/granton-nyange-6a00401a1/" className="text-muted-foreground hover:text-primary transition-colors w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:border-primary/50">
-                  <FiLinkedin className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors w-10 h-10 rounded-lg border border-border flex items-center justify-center hover:border-primary/50">
-                  <FiDribbble className="w-5 h-5" />
-                </a>
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left — Big CTA + details */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="section-label">05 — Contact</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 tracking-tight leading-[1.05]">
+              Let's build
+              <br />
+              <span className="text-muted-foreground/30">something great.</span>
+            </h2>
+            
+            <p className="text-muted-foreground mt-6 mb-10 max-w-sm leading-relaxed">
+              Have a project in mind or just want to connect? I'm always open to new conversations and collaborations.
+            </p>
+            
+            {/* Contact details — minimal */}
+            <div className="space-y-4 mb-10">
+              <a href="mailto:mburugranton@gmail.com" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                <Mail className="w-4 h-4" />
+                <span>mburugranton@gmail.com</span>
+                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4" />
+                <span>Nairobi, Kenya</span>
               </div>
             </div>
             
-            <div className="animate-on-scroll">
-              <form onSubmit={handleSubmit(onSubmit)} className="bg-background border border-border p-6 rounded-xl">
-                <h3 className="text-lg font-semibold mb-5">Send me a message</h3>
-                
-                <div className="space-y-5">
-                  <div>
-                    <Label htmlFor="name" className="block text-sm font-medium mb-1.5">Name</Label>
-                    <Input
-                      id="name"
-                      {...register("name", { required: "Name is required" })}
-                      className="w-full"
-                      placeholder="Your name"
-                    />
-                    {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email" className="block text-sm font-medium mb-1.5">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      {...register("email", { 
-                        required: "Email is required",
-                        pattern: {
-                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                          message: "Invalid email address"
-                        }
-                      })}
-                      className="w-full"
-                      placeholder="Your email"
-                    />
-                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="subject" className="block text-sm font-medium mb-1.5">Subject</Label>
-                    <Input
-                      id="subject"
-                      {...register("subject", { required: "Subject is required" })}
-                      className="w-full"
-                      placeholder="Subject"
-                    />
-                    {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>}
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message" className="block text-sm font-medium mb-1.5">Message</Label>
-                    <Textarea
-                      id="message"
-                      {...register("message", { required: "Message is required" })}
-                      rows={4}
-                      className="w-full"
-                      placeholder="Your message"
-                    />
-                    {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-white"
-                  >
-                    <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
-                    {!isSubmitting && (
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                      </svg>
-                    )}
-                  </Button>
-                </div>
-              </form>
+            {/* Socials — clean row */}
+            <div className="flex items-center gap-3">
+              <a href="https://github.com/MburuGranton" className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all">
+                <FiGithub className="w-4 h-4" />
+              </a>
+              <a href="https://x.com/GrantonMburu" className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all">
+                <FiTwitter className="w-4 h-4" />
+              </a>
+              <a href="https://www.linkedin.com/in/granton-nyange-6a00401a1/" className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all">
+                <FiLinkedin className="w-4 h-4" />
+              </a>
             </div>
-          </div>
+          </motion.div>
+          
+          {/* Right — Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="name" className="text-xs font-medium text-muted-foreground mb-2 block">Name</Label>
+                  <Input
+                    id="name"
+                    {...register("name", { required: "Name is required" })}
+                    className="bg-card border-border/50 rounded-xl h-11"
+                    placeholder="Your name"
+                  />
+                  {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+                </div>
+                <div>
+                  <Label htmlFor="email" className="text-xs font-medium text-muted-foreground mb-2 block">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    {...register("email", { 
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Invalid email address"
+                      }
+                    })}
+                    className="bg-card border-border/50 rounded-xl h-11"
+                    placeholder="you@example.com"
+                  />
+                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+                </div>
+              </div>
+              
+              <div>
+                <Label htmlFor="subject" className="text-xs font-medium text-muted-foreground mb-2 block">Subject</Label>
+                <Input
+                  id="subject"
+                  {...register("subject", { required: "Subject is required" })}
+                  className="bg-card border-border/50 rounded-xl h-11"
+                  placeholder="What's this about?"
+                />
+                {errors.subject && <p className="text-red-500 text-xs mt-1">{errors.subject.message}</p>}
+              </div>
+              
+              <div>
+                <Label htmlFor="message" className="text-xs font-medium text-muted-foreground mb-2 block">Message</Label>
+                <Textarea
+                  id="message"
+                  {...register("message", { required: "Message is required" })}
+                  rows={5}
+                  className="bg-card border-border/50 rounded-xl resize-none"
+                  placeholder="Tell me about your project..."
+                />
+                {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
+              </div>
+              
+              <Button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full bg-primary hover:bg-primary/90 text-white rounded-full h-11 font-medium"
+              >
+                {isSubmitting ? "Sending..." : "Send message"}
+              </Button>
+            </form>
+          </motion.div>
         </div>
       </div>
     </section>

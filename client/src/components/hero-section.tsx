@@ -1,155 +1,132 @@
-import { FiGithub, FiTwitter, FiLinkedin, FiArrowRight } from "react-icons/fi";
-import { Button } from "@/components/ui/button";
+import { FiGithub, FiTwitter, FiLinkedin, FiArrowDown } from "react-icons/fi";
 import { motion } from "framer-motion";
-import BrandLogo from "@/components/brand-logo";
-import { brands } from "@/data";
+import { useEffect, useState } from "react";
+
+const roles = ["Community Strategist", "Partnerships Lead", "Web3 Builder", "Growth Architect"];
 
 const HeroSection = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="home" className="pt-32 pb-24 min-h-screen flex items-center">
+    <section id="home" className="relative min-h-screen flex items-end pb-16 pt-24">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-12 gap-12 items-center">
-          {/* Left content - takes 7 columns for asymmetry */}
-          <div className="md:col-span-7">
-            <motion.p 
-              className="text-sm font-medium text-primary mb-4 tracking-wide"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              Open to new collaborations
-            </motion.p>
-            
-            <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 tracking-tight"
-              initial={{ opacity: 0, y: 20 }}
+        {/* Main content — editorial layout */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-0 items-end">
+          {/* Left column — big text */}
+          <div className="lg:col-span-7 lg:pb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              Hi, I am{" "}
-              <span className="text-primary">Granton Mburu</span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              I craft partnerships, lead communities, and bring bold ideas to life across Africa Web3 and tech ecosystem.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-wrap gap-4 mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Button asChild className="bg-primary hover:bg-primary/90 text-white px-6 py-5 rounded-lg font-medium">
-                <a href="#projects" className="flex items-center gap-2">
-                  View my work
-                  <FiArrowRight className="w-4 h-4" />
-                </a>
-              </Button>
-              <Button asChild variant="outline" className="px-6 py-5 rounded-lg font-medium border-2">
-                <a href="#contact">Lets talk</a>
-              </Button>
-            </motion.div>
-            
-            <motion.div 
-              className="flex items-center gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <span className="text-sm text-muted-foreground">Find me on</span>
-              <div className="flex items-center gap-3">
-                <a
-                  href="#"
-                  className="p-2.5 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors"
-                  aria-label="GitHub"
+              <p className="section-label mb-6">Available for collaborations</p>
+              
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tighter mb-6">
+                Granton
+                <br />
+                <span className="text-muted-foreground/30">Mburu</span>
+              </h1>
+
+              {/* Rotating role */}
+              <div className="h-8 mb-8 overflow-hidden">
+                <motion.p
+                  key={roleIndex}
+                  className="text-lg text-muted-foreground font-medium"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <FiGithub className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="p-2.5 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors"
-                  aria-label="Twitter"
-                >
-                  <FiTwitter className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="p-2.5 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <FiLinkedin className="w-5 h-5" />
-                </a>
+                  {roles[roleIndex]}
+                </motion.p>
               </div>
+              
+              <p className="text-base text-muted-foreground max-w-md leading-relaxed mb-10">
+                I craft partnerships, lead communities, and bring bold ideas to life across Africa's Web3 and tech ecosystem.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="flex items-center gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors"
+              >
+                View my work
+                <FiArrowDown className="w-4 h-4" />
+              </a>
+              <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors link-hover">
+                Let&apos;s talk
+              </a>
             </motion.div>
           </div>
           
-          {/* Right - Profile image with simple, elegant framing */}
+          {/* Right column — photo with unique treatment */}
           <motion.div 
-            className="md:col-span-5"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative max-w-sm mx-auto">
-              {/* Simple accent shape - not animated */}
-              <div className="absolute -top-3 -right-3 w-full h-full bg-primary/10 rounded-2xl"></div>
-              
-              {/* Main image */}
-              <div className="relative bg-card rounded-2xl overflow-hidden shadow-elevated">
+            <div className="relative">
+              {/* Photo with clip-path personality */}
+              <div className="relative overflow-hidden rounded-3xl" style={{ clipPath: "polygon(8% 0, 100% 0, 100% 92%, 0 100%, 0 8%)" }}>
                 <img 
                   src="https://drive.google.com/thumbnail?id=1rlGB4t-HO1ca8YBa2lUEon9-w03nleuU&sz=w1000" 
                   alt="Granton Mburu" 
-                  className="w-full aspect-square object-cover"
+                  className="w-full aspect-[4/5] object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.onerror = null;
                     target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80";
                   }}
                 />
+                {/* Subtle overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
               </div>
-              
-              {/* Experience badge - simple and clean */}
-              <div className="absolute -bottom-4 -left-4 bg-card border border-border px-4 py-3 rounded-xl shadow-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                    <span className="text-white text-lg">4+</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold">Years</p>
-                    <p className="text-xs text-muted-foreground">Experience</p>
-                  </div>
-                </div>
+
+              {/* Floating stat — positioned organically */}
+              <div className="absolute -bottom-3 -left-3 bg-card border border-border px-5 py-3 rounded-2xl shadow-elevated">
+                <p className="text-2xl font-bold text-primary leading-none">4+</p>
+                <p className="text-[11px] text-muted-foreground mt-1">years building</p>
               </div>
             </div>
           </motion.div>
         </div>
-        
-        {/* Brands section - cleaner, less flashy */}
-        <motion.div 
-          className="mt-24 pt-12 border-t border-border"
+
+        {/* Bottom bar — socials + scroll hint */}
+        <motion.div
+          className="flex items-center justify-between mt-16 pt-6 border-t border-border/50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <p className="text-center text-muted-foreground mb-8 text-sm">
-            Trusted by innovative brands
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-            {brands.map((brand, index) => (
-              <div
-                key={index}
-                className="opacity-50 hover:opacity-100 transition-opacity duration-200"
-              >
-                <BrandLogo {...brand} />
-              </div>
-            ))}
+          <div className="flex items-center gap-3">
+            <a href="https://github.com/MburuGranton" className="p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
+              <FiGithub className="w-4 h-4" />
+            </a>
+            <a href="https://x.com/GrantonMburu" className="p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="Twitter">
+              <FiTwitter className="w-4 h-4" />
+            </a>
+            <a href="https://www.linkedin.com/in/granton-nyange-6a00401a1/" className="p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="LinkedIn">
+              <FiLinkedin className="w-4 h-4" />
+            </a>
           </div>
+          <a href="#about" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
+            <span>Scroll to explore</span>
+            <FiArrowDown className="w-3 h-3 animate-bounce" />
+          </a>
         </motion.div>
       </div>
     </section>

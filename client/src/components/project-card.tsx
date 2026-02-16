@@ -1,6 +1,5 @@
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { Link } from "wouter";
-import { useEffect, useState } from "react";
 
 interface Technology {
   name: string;
@@ -17,87 +16,74 @@ interface ProjectCardProps {
   projectUrl: string;
   githubUrl: string;
   category: string;
+  featured?: boolean;
 }
 
 const ProjectCard = ({
   title,
-  subtitle,
   description,
   technologies,
   imageUrl,
-  projectUrl,
   githubUrl,
-  category
+  category,
+  featured = false,
 }: ProjectCardProps) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  
-  // Monitor the theme changes by checking the HTML class
-  useEffect(() => {
-    const updateTheme = () => {
-      const isDarkMode = document.documentElement.classList.contains("dark");
-      setTheme(isDarkMode ? "dark" : "light");
-    };
-    
-    // Set initial theme
-    updateTheme();
-    
-    // Watch for changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "class") {
-          updateTheme();
-        }
-      });
-    });
-    
-    observer.observe(document.documentElement, { attributes: true });
-    
-    return () => observer.disconnect();
-  }, []);
-  
   return (
-    <div className="animate-on-scroll group h-full">
-      <div className="bg-card rounded-xl overflow-hidden h-full flex flex-col border border-border hover:border-primary/30 transition-colors duration-300 shadow-sm hover:shadow-md">
-        <div className="relative overflow-hidden">
+    <div className={`group h-full ${featured ? '' : ''}`}>
+      <div className={`bg-card rounded-2xl overflow-hidden h-full flex ${featured ? 'flex-col' : 'flex-col'} border border-border hover:border-primary/20 transition-all duration-300`}>
+        {/* Image */}
+        <div className={`relative overflow-hidden ${featured ? 'h-64 md:h-80' : 'h-48'}`}>
           <img 
             src={imageUrl}
             alt={title} 
-            className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
-          {/* Category badge */}
-          <div className="absolute top-3 left-3">
-            <span className="bg-background/90 backdrop-blur-sm text-xs font-medium px-3 py-1.5 rounded-md border border-border">{category}</span>
+          {/* Category — pill style */}
+          <div className="absolute top-4 left-4">
+            <span className="text-[11px] font-medium px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-foreground">
+              {category}
+            </span>
           </div>
         </div>
         
-        <div className="p-5 flex flex-col flex-grow">
-          <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{title}</h3>
-          <p className="text-muted-foreground text-sm mb-4 flex-grow leading-relaxed">{description}</p>
-          <div className="flex flex-wrap gap-2 mb-4">
+        {/* Content */}
+        <div className={`p-5 ${featured ? 'md:p-6' : ''} flex flex-col flex-grow`}>
+          <h3 className={`font-semibold ${featured ? 'text-xl' : 'text-base'} mb-2 group-hover:text-primary transition-colors leading-tight`}>
+            {title}
+          </h3>
+          <p className={`text-muted-foreground ${featured ? 'text-sm' : 'text-xs'} mb-4 flex-grow leading-relaxed line-clamp-3`}>
+            {description}
+          </p>
+          
+          {/* Tech tags */}
+          <div className="flex flex-wrap gap-1.5 mb-4">
             {technologies.map((tech, index) => (
               <span 
                 key={index} 
-                className="bg-muted text-muted-foreground text-xs px-2.5 py-1 rounded-md"
+                className="text-[11px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground"
               >
                 {tech.name}
               </span>
             ))}
           </div>
-          <div className="flex justify-between items-center mt-auto pt-4 border-t border-border">
+          
+          {/* Actions */}
+          <div className="flex items-center justify-between pt-3 border-t border-border/50 mt-auto">
             <Link href={`/project/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
-              <div className="text-primary font-medium flex items-center text-sm cursor-pointer hover:underline">
-                <span>View Project</span>
-                <FiExternalLink className="h-4 w-4 ml-1.5" />
+              <div className="text-primary text-sm font-medium flex items-center gap-1.5 cursor-pointer hover:gap-2.5 transition-all">
+                <span>View details</span>
+                <FiExternalLink className="h-3.5 w-3.5" />
               </div>
             </Link>
             <a 
               href={githubUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 rounded-lg border border-border hover:border-primary/50 hover:text-primary transition-colors"
+              className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
             >
-              <FiGithub className="h-5 w-5" />
+              <FiGithub className="h-4 w-4" />
             </a>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Filter } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import ArticleCard from "@/components/article-card";
@@ -7,12 +6,10 @@ import { checkInView } from "@/lib/animation";
 import { useArticles } from "@/hooks/use-contentful";
 import { useAllBlogViews } from "@/hooks/use-blog-views";
 import { Skeleton } from "@/components/ui/skeleton"; 
+import { motion } from "framer-motion";
 
 const Blog = () => {
-  // Fetch articles from Contentful
   const { data: articles = [], isLoading, error } = useArticles();
-  
-  // Fetch all blog views
   const { data: allViews = {} } = useAllBlogViews();
   
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -30,83 +27,77 @@ const Blog = () => {
   }, [selectedCategory, articles]);
   
   useEffect(() => {
-    // Set up animation on scroll
-    const checkAnimations = () => {
-      checkInView();
-    };
-    
-    // Initial check
-    checkAnimations();
-    // Check on scroll
-    window.addEventListener("scroll", checkAnimations);
-    
-    return () => {
-      window.removeEventListener("scroll", checkAnimations);
-    };
+    checkInView();
+    window.addEventListener("scroll", checkInView);
+    return () => window.removeEventListener("scroll", checkInView);
   }, []);
   
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans overflow-x-hidden min-h-screen">
+    <div className="bg-background text-foreground overflow-x-hidden min-h-screen">
       <Navbar minimal />
       
-      <main className="pt-24 md:pt-32 pb-16 md:pb-20 overflow-x-hidden">
+      <main className="pt-28 md:pt-36 pb-16 md:pb-24 overflow-x-hidden">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 md:mb-16 animate-on-scroll">
-            <div className="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900 text-accent dark:text-purple-400 mb-4 md:mb-6">
-              <span className="text-sm font-medium">Articles</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4 leading-tight">Blog</h1>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2">
+          {/* Header */}
+          <motion.div
+            className="mb-14"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="section-label">Blog</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mt-4 tracking-tight leading-[1.05]">
+              Thoughts &<br />
+              <span className="text-muted-foreground/30">insights</span>
+            </h1>
+            <p className="text-muted-foreground mt-4 max-w-lg text-base leading-relaxed">
               Insights, tutorials, and industry analyses to help you stay informed about the latest trends and best practices.
             </p>
-          </div>
+          </motion.div>
           
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12 animate-on-scroll">
-            <div className="inline-flex items-center mb-2 text-sm">
-              <Filter className="h-4 w-4 mr-1" />
-              <span className="font-medium">Filter by:</span>
-            </div>
+          {/* Filter */}
+          <motion.div
+            className="flex flex-wrap gap-1.5 mb-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             {categories.map((category, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                   selectedCategory === category
-                    ? "bg-primary text-white"
-                    : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+                    ? "bg-foreground text-background"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {category}
               </button>
             ))}
-          </div>
+          </motion.div>
           
-          {/* Error State */}
+          {/* Error */}
           {error && (
-            <div className="text-center p-8 bg-red-50 dark:bg-red-900/20 rounded-lg mb-8">
-              <p className="text-red-600 dark:text-red-400">
+            <div className="text-center p-8 bg-destructive/10 rounded-2xl mb-8">
+              <p className="text-destructive text-sm">
                 Unable to load articles. Please try again later.
               </p>
             </div>
           )}
           
-          {/* Loading State */}
+          {/* Loading */}
           {isLoading && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {[1, 2, 3, 4, 5, 6].map((item) => (
                 <div key={item} className="h-full">
-                  <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full">
-                    <Skeleton className="h-48 w-full" />
-                    <div className="p-6">
-                      <Skeleton className="h-6 w-2/3 mb-2" />
-                      <Skeleton className="h-4 w-full mb-4" />
+                  <div className="bg-card border border-border rounded-2xl overflow-hidden h-full">
+                    <Skeleton className="h-40 w-full" />
+                    <div className="p-5">
+                      <Skeleton className="h-4 w-20 mb-3" />
+                      <Skeleton className="h-5 w-2/3 mb-2" />
                       <Skeleton className="h-4 w-full mb-2" />
-                      <Skeleton className="h-4 w-3/4" />
-                      <div className="mt-4 flex justify-between items-center">
-                        <Skeleton className="h-4 w-24" />
-                        <Skeleton className="h-4 w-16" />
-                      </div>
+                      <Skeleton className="h-4 w-1/2" />
                     </div>
                   </div>
                 </div>
@@ -114,12 +105,18 @@ const Blog = () => {
             </div>
           )}
           
-          {/* Articles Grid */}
+          {/* Articles */}
           {!isLoading && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredArticles.length > 0 ? (
                 filteredArticles.map((article, index) => (
-                  <div key={index} className="h-full">
+                  <motion.div
+                    key={index}
+                    className="h-full"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.06 }}
+                  >
                     <ArticleCard
                       title={article.title}
                       excerpt={article.excerpt}
@@ -130,12 +127,12 @@ const Blog = () => {
                       slug={article.slug}
                       views={allViews[article.slug] || 0}
                     />
-                  </div>
+                  </motion.div>
                 ))
               ) : (
                 <div className="col-span-3 text-center p-12">
-                  <p className="text-gray-500 dark:text-gray-400">
-                    No articles found in this category. Try selecting a different category.
+                  <p className="text-muted-foreground text-sm">
+                    No articles found in this category.
                   </p>
                 </div>
               )}
