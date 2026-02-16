@@ -2,6 +2,13 @@ import ProjectCard from "@/components/project-card";
 import { projects } from "@/data";
 import { motion } from "framer-motion";
 
+const partnershipProjects = projects.filter(
+  (p) => p.category !== "Web Development"
+);
+const technicalProjects = projects.filter(
+  (p) => p.category === "Web Development"
+);
+
 const ProjectsSection = () => {
   return (
     <section id="projects" className="py-28">
@@ -24,10 +31,44 @@ const ProjectsSection = () => {
             From partnership deals and buildathons to full-stack web apps — a mix of what I've shipped.
           </p>
         </motion.div>
-        
-        {/* Bento-style grid — first project featured large */}
+
+        {/* Partnerships & Community */}
+        <motion.h3
+          className="text-sm font-medium text-muted-foreground mb-6 tracking-wide uppercase"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          Partnerships & Community
+        </motion.h3>
+        <div className="bento-grid mb-20">
+          {partnershipProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              className="h-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProjectCard {...project} featured={index === 0} />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Technical Projects */}
+        <motion.h3
+          className="text-sm font-medium text-muted-foreground mb-6 tracking-wide uppercase"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          Technical Projects
+        </motion.h3>
         <div className="bento-grid">
-          {projects.map((project, index) => (
+          {technicalProjects.map((project, index) => (
             <motion.div
               key={index}
               className="h-full"
