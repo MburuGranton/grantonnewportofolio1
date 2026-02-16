@@ -73,7 +73,7 @@ export const projects = [
       { name: "TailwindCSS", color: "text-primary", bgColor: "bg-blue-100" }
     ],
     imageUrl: "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-    projectUrl: "https://mburugrantion.github.io/ecommerce-platform/",
+    projectUrl: "https://mburugranton.github.io/ecommerce-platform/",
     githubUrl: "https://github.com/MburuGranton/ecommerce-platform",
     category: "Web Development"
   },
@@ -87,7 +87,7 @@ export const projects = [
       { name: "TailwindCSS", color: "text-secondary", bgColor: "bg-green-100" }
     ],
     imageUrl: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-    projectUrl: "https://mburugrantion.github.io/fitness-tracker/",
+    projectUrl: "https://mburugranton.github.io/fitness-tracker/",
     githubUrl: "https://github.com/MburuGranton/fitness-tracker",
     category: "Web Development"
   },
@@ -101,7 +101,7 @@ export const projects = [
       { name: "TailwindCSS", color: "text-accent", bgColor: "bg-purple-100" }
     ],
     imageUrl: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-    projectUrl: "https://mburugrantion.github.io/analytics-dashboard/",
+    projectUrl: "https://mburugranton.github.io/analytics-dashboard/",
     githubUrl: "https://github.com/MburuGranton/analytics-dashboard",
     category: "Web Development"
   }
