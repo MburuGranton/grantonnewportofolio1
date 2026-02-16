@@ -65,44 +65,44 @@ export const skills = {
 export const projects = [
   {
     title: "Modern E-commerce Platform",
-    subtitle: "React, Redux, Stripe",
-    description: "A fully responsive e-commerce platform with shopping cart, payment processing, and user accounts.",
+    subtitle: "React, TypeScript, TailwindCSS",
+    description: "A fully responsive e-commerce platform with product browsing, search & filtering, shopping cart, and checkout flow. Built with React, TypeScript, and Tailwind CSS featuring a modern UI with category navigation and real-time cart management.",
     technologies: [
       { name: "React", color: "text-primary", bgColor: "bg-blue-100" },
-      { name: "Redux", color: "text-primary", bgColor: "bg-blue-100" },
-      { name: "Stripe", color: "text-primary", bgColor: "bg-blue-100" }
+      { name: "TypeScript", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "TailwindCSS", color: "text-primary", bgColor: "bg-blue-100" }
     ],
     imageUrl: "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-    projectUrl: "#",
-    githubUrl: "#",
+    projectUrl: "https://mburugrantion.github.io/ecommerce-platform/",
+    githubUrl: "https://github.com/MburuGranton/ecommerce-platform",
     category: "Web Development"
   },
   {
     title: "Health & Fitness Tracker",
-    subtitle: "React Native, Firebase",
-    description: "A mobile app for tracking workouts, nutrition, and progress with customizable goals and analytics.",
+    subtitle: "React, TypeScript, TailwindCSS",
+    description: "A dark-themed fitness application for logging workouts, tracking daily goals (steps, calories, water), and visualizing weekly progress with custom SVG charts and progress rings. Features localStorage persistence.",
     technologies: [
-      { name: "React Native", color: "text-secondary", bgColor: "bg-green-100" },
-      { name: "Firebase", color: "text-secondary", bgColor: "bg-green-100" },
-      { name: "Charts", color: "text-secondary", bgColor: "bg-green-100" }
+      { name: "React", color: "text-secondary", bgColor: "bg-green-100" },
+      { name: "TypeScript", color: "text-secondary", bgColor: "bg-green-100" },
+      { name: "TailwindCSS", color: "text-secondary", bgColor: "bg-green-100" }
     ],
     imageUrl: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-    projectUrl: "#",
-    githubUrl: "#",
-    category: "Mobile Development"
+    projectUrl: "https://mburugrantion.github.io/fitness-tracker/",
+    githubUrl: "https://github.com/MburuGranton/fitness-tracker",
+    category: "Web Development"
   },
   {
     title: "Analytics Dashboard",
-    subtitle: "Vue.js, D3.js, TailwindCSS",
-    description: "A comprehensive dashboard for SaaS businesses with real-time analytics, user management, and reporting.",
+    subtitle: "React, TypeScript, TailwindCSS",
+    description: "A comprehensive SaaS analytics dashboard with KPI metric cards, interactive SVG line/bar/pie charts, sortable data tables with pagination, dark/light mode, and a collapsible sidebar. All charts built with pure SVG — no external libraries.",
     technologies: [
-      { name: "Vue.js", color: "text-accent", bgColor: "bg-purple-100" },
-      { name: "D3.js", color: "text-accent", bgColor: "bg-purple-100" },
+      { name: "React", color: "text-accent", bgColor: "bg-purple-100" },
+      { name: "TypeScript", color: "text-accent", bgColor: "bg-purple-100" },
       { name: "TailwindCSS", color: "text-accent", bgColor: "bg-purple-100" }
     ],
     imageUrl: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-    projectUrl: "#",
-    githubUrl: "#",
+    projectUrl: "https://mburugrantion.github.io/analytics-dashboard/",
+    githubUrl: "https://github.com/MburuGranton/analytics-dashboard",
     category: "Web Development"
   }
 ];
