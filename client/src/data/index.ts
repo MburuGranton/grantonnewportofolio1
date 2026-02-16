@@ -1,20 +1,12 @@
 export const brands = [
-  {
-    name: "CV VC",
-    icon: "cube" // Using a generic icon since specific logo might not be available
-  },
-  {
-    name: "Base",
-    icon: "base"
-  },
-  {
-    name: "Lisk",
-    icon: "cube" // Using a generic icon since specific logo might not be available
-  },
-  {
-    name: "Berachain",
-    icon: "cube" // Using a generic icon since specific logo might not be available
-  }
+  { name: "NODO", icon: "cube" },
+  { name: "CV Labs", icon: "cube" },
+  { name: "Tether", icon: "cube" },
+  { name: "Lisk", icon: "cube" },
+  { name: "Base", icon: "base" },
+  { name: "HER DAO Kenya", icon: "cube" },
+  { name: "SHE Code Africa", icon: "cube" },
+  { name: "Power Learn Project", icon: "cube" },
 ];
 
 export const skills = {
@@ -36,33 +28,125 @@ export const skills = {
     { name: "Git & GitHub" },
     { name: "Node.js" }
   ],
-  marketing: [
-    { name: "Content Strategy" },
-    { name: "SEO" },
-    { name: "Social Media" },
-    { name: "Analytics" }
+  operations: [
+    { name: "Project Management" },
+    { name: "Logistics & Planning" },
+    { name: "Cross-functional Ops" },
+    { name: "KPI Tracking" }
   ],
-  business: [
-    { name: "Business Development" },
-    { name: "Market Research" },
-    { name: "Strategic Planning" },
-    { name: "Revenue Growth" }
-  ],
-  partnership: [
-    { name: "Relationship Building" },
-    { name: "Contract Negotiation" },
+  partnerships: [
+    { name: "Deal Execution" },
+    { name: "Partner Onboarding" },
     { name: "Alliance Management" },
-    { name: "Joint Ventures" }
+    { name: "Stakeholder Relations" }
   ],
-  kol: [
-    { name: "Influencer Relations" },
-    { name: "Community Building" },
-    { name: "Campaign Management" },
-    { name: "Brand Advocacy" }
+  community: [
+    { name: "Buildathon Coordination" },
+    { name: "University Activations" },
+    { name: "Developer Onboarding" },
+    { name: "Ecosystem Growth" }
+  ],
+  web3: [
+    { name: "Blockchain Fundamentals" },
+    { name: "Stablecoins & DeFi" },
+    { name: "Ecosystem Strategy" },
+    { name: "Campaign Execution" }
   ]
 };
 
 export const projects = [
+  {
+    title: "Partnership Operations — NODO",
+    subtitle: "Web3 Ecosystem & Partnership Management",
+    description: "Led execution of partnership deals with CV Labs, Tether, and Lisk. Coordinated ecosystem collaborations across African Web3 communities and managed cross-functional operations for blockchain campaigns and activations.",
+    technologies: [
+      { name: "Partnerships", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "Operations", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "Web3", color: "text-primary", bgColor: "bg-blue-100" }
+    ],
+    imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
+    projectUrl: "",
+    githubUrl: "",
+    category: "Partnerships",
+    overview: "As Partnership Operations Lead at NODO since September 2024, I've been responsible for sourcing, negotiating, and executing partnership deals that bring real value to the African Web3 ecosystem. This includes working directly with global brands like CV Labs, Tether, and Lisk to craft activations tailored for the East African market.",
+    keyFeatures: [
+      "Executed partnership deals with CV Labs, Tether, and Lisk",
+      "Coordinated cross-community ecosystem collaborations across East Africa",
+      "Managed logistics and operations for blockchain campaigns",
+      "Built repeatable frameworks for partner onboarding and activation",
+      "Tracked KPIs and reported outcomes to stakeholders"
+    ],
+    timeline: "Sept 2024 — Present"
+  },
+  {
+    title: "BASE Buildathon Kenya",
+    subtitle: "Buildathon Planning, Execution & Partner Coordination",
+    description: "Led planning and execution of a multi-week blockchain buildathon in Kenya. Coordinated partners including HER DAO Kenya, SHE Code Africa, Power Learn Project, Space Ya Tech, and Mmei Community.",
+    technologies: [
+      { name: "Event Management", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "Buildathon", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "Base", color: "text-primary", bgColor: "bg-blue-100" }
+    ],
+    imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
+    projectUrl: "",
+    githubUrl: "",
+    category: "Community",
+    overview: "I served as Buildathon Lead for the BASE Buildathon in Kenya — a multi-week event designed to onboard developers into the Base ecosystem. The role covered end-to-end planning: partner coordination, speaker scheduling, university office days, milestone tracking, and participant support.",
+    keyFeatures: [
+      "Planned and executed a multi-week blockchain buildathon",
+      "Coordinated 5+ partner organizations (HER DAO Kenya, SHE Code Africa, Power Learn Project, Space Ya Tech, Mmei Community)",
+      "Managed speaker coordination and university office days",
+      "Tracked milestones and ensured deliverables across all partners",
+      "Drove developer onboarding into the Base ecosystem"
+    ],
+    timeline: "2024"
+  },
+  {
+    title: "Stablecoin Education Campaign",
+    subtitle: "NODO × Tether — Web3 Education in East Africa",
+    description: "Executed a 3-month Web3 education campaign in Kenya and East Africa focused on stablecoin awareness, onboarding, and real-world use cases. Drove university activations and community engagement across multiple cities.",
+    technologies: [
+      { name: "Education", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "Stablecoins", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "Tether", color: "text-primary", bgColor: "bg-blue-100" }
+    ],
+    imageUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
+    projectUrl: "",
+    githubUrl: "",
+    category: "Education",
+    overview: "This was a 3-month campaign in partnership with Tether, focused on demystifying stablecoins for students, developers, and everyday users in Kenya and the broader East African region. The campaign combined in-person university events with online content and community discussions.",
+    keyFeatures: [
+      "Ran a 3-month stablecoin awareness campaign across Kenya & East Africa",
+      "Organized in-person university activations and workshops",
+      "Created educational content on stablecoin use cases",
+      "Drove onboarding and real-world adoption conversations",
+      "Engaged multiple university communities and blockchain clubs"
+    ],
+    timeline: "3 months (2024)"
+  },
+  {
+    title: "University Activations",
+    subtitle: "Campus Web3 Events — Zetech, Kabarak & more",
+    description: "Organized Web3-focused campus events with 120+ attendees per event. Collaborated with student clubs and ecosystem leaders to lead onboarding and awareness sessions across multiple Kenyan universities.",
+    technologies: [
+      { name: "Events", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "Onboarding", color: "text-primary", bgColor: "bg-blue-100" },
+      { name: "Web3", color: "text-primary", bgColor: "bg-blue-100" }
+    ],
+    imageUrl: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
+    projectUrl: "",
+    githubUrl: "",
+    category: "Community",
+    overview: "I organized and led Web3 on-campus activations at universities including Zetech and Kabarak. Each event was designed to introduce students to blockchain fundamentals, connect them with ecosystem builders, and provide hands-on onboarding.",
+    keyFeatures: [
+      "Organized campus events with 120+ attendees at some events",
+      "Partnered with student clubs and university administration",
+      "Led hands-on onboarding and awareness sessions",
+      "Connected students with Web3 ecosystem leaders",
+      "Covered universities including Zetech, Kabarak, and others"
+    ],
+    timeline: "Ongoing"
+  },
   {
     title: "Modern E-commerce Platform",
     subtitle: "React, TypeScript, TailwindCSS",

@@ -27,9 +27,9 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight mb-8">
-              Connecting{" "}
-              <span className="text-accent-line">innovation</span>
-              {" "}with people.
+              Engineering{" "}
+              <span className="text-accent-line">meets</span>
+              {" "}ecosystem growth.
             </h2>
             
             <a
@@ -49,10 +49,10 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Over the past few years, I've led high-impact initiatives with brands like Tether, Lisk, and Base — empowering thousands of young developers and blockchain enthusiasts across East Africa.
+              I'm a Mechanical Engineer by training who moved into Web3 operations. Since September 2024 I've been leading partnerships at NODO — executing deals with CV Labs, Tether, and Lisk while coordinating ecosystem collaborations across African blockchain communities.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              My work sits at the intersection of strategy, partnerships, and community building — turning ambitious ideas into measurable results.
+              Before that I led the BASE Buildathon in Kenya, ran a 3-month stablecoin education campaign with Tether, and organized university activations that brought 120+ attendees per event. My work bridges engineering thinking with on-the-ground community building.
             </p>
             
             {/* Stats — horizontal, not grid */}

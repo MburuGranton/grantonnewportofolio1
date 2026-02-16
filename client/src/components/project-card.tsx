@@ -13,10 +13,13 @@ interface ProjectCardProps {
   description: string;
   technologies: Technology[];
   imageUrl: string;
-  projectUrl: string;
-  githubUrl: string;
+  projectUrl?: string;
+  githubUrl?: string;
   category: string;
   featured?: boolean;
+  overview?: string;
+  keyFeatures?: string[];
+  timeline?: string;
 }
 
 const ProjectCard = ({
@@ -77,14 +80,16 @@ const ProjectCard = ({
                 <FiExternalLink className="h-3.5 w-3.5" />
               </div>
             </Link>
-            <a 
-              href={githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <FiGithub className="h-4 w-4" />
-            </a>
+            {githubUrl && (
+              <a 
+                href={githubUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-md text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <FiGithub className="h-4 w-4" />
+              </a>
+            )}
           </div>
         </div>
       </div>

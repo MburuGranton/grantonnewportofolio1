@@ -94,20 +94,26 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
               <p className="text-muted-foreground leading-relaxed">
                 {project.description}
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                This is an expanded description of the project, detailing the challenges faced and solutions implemented. The client needed a robust platform that could handle their complex business requirements while maintaining excellent user experience.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                The solution leverages modern web technologies to provide a scalable, performant application that exceeds the client's expectations and sets them up for future growth.
-              </p>
+              {(project as any).overview && (
+                <p className="text-muted-foreground leading-relaxed">
+                  {(project as any).overview}
+                </p>
+              )}
               
               <h2 className="text-xl font-bold tracking-tight pt-2">Key Features</h2>
               <ul className="list-disc pl-5 text-muted-foreground space-y-2">
-                <li>Responsive design that works seamlessly across all devices</li>
-                <li>Intuitive user interface with thoughtful animations and transitions</li>
-                <li>Robust data handling with efficient state management</li>
-                <li>Integration with third-party services for enhanced functionality</li>
-                <li>Comprehensive testing to ensure reliability and performance</li>
+                {(project as any).keyFeatures ? (
+                  (project as any).keyFeatures.map((f: string, i: number) => (
+                    <li key={i}>{f}</li>
+                  ))
+                ) : (
+                  <>
+                    <li>Responsive design that works seamlessly across all devices</li>
+                    <li>Intuitive user interface with thoughtful animations and transitions</li>
+                    <li>Robust data handling with efficient state management</li>
+                    <li>Integration with third-party services for enhanced functionality</li>
+                  </>
+                )}
               </ul>
             </div>
             
@@ -121,7 +127,7 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">Timeline</p>
-                    <p className="text-sm font-medium">4 weeks</p>
+                    <p className="text-sm font-medium">{(project as any).timeline || '4 weeks'}</p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-1">Technologies</p>
@@ -137,26 +143,30 @@ const ProjectDetail = ({ params }: { params: { slug: string } }) => {
               </div>
               
               <div className="flex flex-col gap-3">
-                <Button 
-                  className="w-full rounded-full" 
-                  asChild
-                >
-                  <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="h-3.5 w-3.5 mr-2" />
-                    Visit Live Project
-                  </a>
-                </Button>
+                {project.projectUrl && (
+                  <Button 
+                    className="w-full rounded-full" 
+                    asChild
+                  >
+                    <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="h-3.5 w-3.5 mr-2" />
+                      Visit Live Project
+                    </a>
+                  </Button>
+                )}
                 
-                <Button 
-                  variant="outline" 
-                  className="w-full rounded-full" 
-                  asChild
-                >
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="h-3.5 w-3.5 mr-2" />
-                    View Source Code
-                  </a>
-                </Button>
+                {project.githubUrl && (
+                  <Button 
+                    variant="outline" 
+                    className="w-full rounded-full" 
+                    asChild
+                  >
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Github className="h-3.5 w-3.5 mr-2" />
+                      View Source Code
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
           </motion.div>

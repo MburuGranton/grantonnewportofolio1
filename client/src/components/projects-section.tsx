@@ -21,7 +21,7 @@ const ProjectsSection = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
-            Each project presented unique challenges that shaped my approach to building in the Web3 space.
+            From partnership deals and buildathons to full-stack web apps — a mix of what I've shipped.
           </p>
         </motion.div>
         

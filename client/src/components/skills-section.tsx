@@ -1,4 +1,4 @@
-import { Code, Monitor, Briefcase, LineChart, Users, Handshake, Mic } from "lucide-react";
+import { Code, Monitor, Briefcase, LineChart, Users, Handshake, Link2 } from "lucide-react";
 import { skills } from "@/data";
 import { motion } from "framer-motion";
 
@@ -9,10 +9,10 @@ const technicalSkills = [
 ];
 
 const businessSkills = [
-  { title: "Marketing", icon: LineChart, skills: skills.marketing, accent: "bg-rose-500" },
-  { title: "Business Development", icon: Users, skills: skills.business, accent: "bg-amber-500" },
-  { title: "Partnership Management", icon: Handshake, skills: skills.partnership, accent: "bg-cyan-500" },
-  { title: "KOL Management", icon: Mic, skills: skills.kol, accent: "bg-indigo-500" },
+  { title: "Operations", icon: LineChart, skills: skills.operations, accent: "bg-rose-500" },
+  { title: "Partnerships", icon: Handshake, skills: skills.partnerships, accent: "bg-amber-500" },
+  { title: "Community Building", icon: Users, skills: skills.community, accent: "bg-cyan-500" },
+  { title: "Web3 & Blockchain", icon: Link2, skills: skills.web3, accent: "bg-indigo-500" },
 ];
 
 const SkillsSection = () => {

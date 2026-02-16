@@ -2,7 +2,7 @@ import { FiGithub, FiTwitter, FiLinkedin, FiArrowDown } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const roles = ["Community Strategist", "Partnerships Lead", "Web3 Builder", "Growth Architect"];
+const roles = ["Partnership Operations Lead", "Web3 Ecosystem Builder", "Community Strategist", "Mechanical Engineer"];
 
 const HeroSection = () => {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -49,7 +49,7 @@ const HeroSection = () => {
               </div>
               
               <p className="text-base text-muted-foreground max-w-md leading-relaxed mb-10">
-                I craft partnerships, lead communities, and bring bold ideas to life across Africa's Web3 and tech ecosystem.
+                Mechanical engineer turned Web3 operator. I lead partnerships, run buildathons, and drive blockchain adoption across East Africa.
               </p>
             </motion.div>
 
