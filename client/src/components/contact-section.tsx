@@ -38,6 +38,7 @@ const ContactSection = () => {
             {
               from_name: data.name,
               from_email: data.email,
+              reply_to: data.email,
               subject: data.subject,
               message: data.message,
               to_email: email,
